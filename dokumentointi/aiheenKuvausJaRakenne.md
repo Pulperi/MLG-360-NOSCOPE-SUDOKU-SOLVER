@@ -1,6 +1,6 @@
 ## MLG 360 NOSCOPE SUDOKU SOLVER (work name) 
 
-Projektin tarkoitus on lähteä työstämään sudoku ratkaisijaa. Projektin edetessä tarkoitus on skooppia on tarkoitus laajentaa. 
+Projektin tarkoitus on lähteä työstämään sudoku ratkaisijaa. Projektin edetessä tarkoitus on skooppia on tarkoitus laajentaa... *<INSERT MORE TEXT HERE>*
 
 #### Ensimmäinen vaihe 
 
