@@ -2,25 +2,25 @@
 
 Projektin tarkoitus on lähteä työstämään sudoku ratkaisijaa. Projektin edetessä tarkoitus on skooppia on tarkoitus laajentaa. 
 
-** Ensimmäinen vaihe**
+**Ensimmäinen vaihe**
 
 * Toteutetaan sudokuratkaisija, jolla voi ratkaista siihen syötettyjä sudokuita.
 
-** Käyttäjän toiminnot:**
+**Käyttäjän toiminnot:**
 * Sudokun syöttäminen manuaalisesti graafisen käyttöliittymän kautta
 * Sudokun lataaminen tiedostosta
 * Syötetyn sudokun ratkaiseminen
 * ...
 
-** Toinen vaihe**
+**Toinen vaihe**
 
 * Lisätään mahdollisuus luoda uusia sudokuita, joilla uniikki ratkaisu.
 
-** Käyttäjän lisätoiminnot:**
+**Käyttäjän lisätoiminnot:**
 * Sudokujen generointi (mahdollisuus vaikuttaa generoitujen sudokuiden vaikeuteen)
 * Generoitujen sudokuiden tallennus tiedostoon
 
-** Kolmas vaihe**
+**Kolmas vaihe**
 
 * Mahdollisuus pelata ladattuja/generoituja sudokuita
 
