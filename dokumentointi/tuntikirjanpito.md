@@ -1,3 +1,3 @@
 #### TUNTIKIRJANPITO
-* 14/01/2015 // 19-21 (2 tuntia)
-  * Projekti-idean kehityst‰ ja kehityssoftan setuppia
+* 14/01/2015 //  (~3 tuntia)
+  * Projekti-idean kehityst√§ ja kehityssoftan setuppia
