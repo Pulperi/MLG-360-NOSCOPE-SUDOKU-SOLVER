@@ -4,11 +4,11 @@ Projektin tarkoitus on lähteä työstämään sudokupeliä/-ohjelmaa. Projektin
 
 Alla napkin draftiä ohjelman toiminnallisuudesta ja rakenteesta... 
 
-![KayttoliittymaDraft](https://github.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/edit/master/dokumentointi/kayttoliittyma-draft.png)
+![KayttoliittymaDraft](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/edit/master/dokumentointi/kayttoliittyma-draft.png)
 
-![PerustoiminnallisuuskaavioDraft](https://github.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/edit/master/dokumentointi/perustoiminnalisuuskaavio-draft.png)
+![PerustoiminnallisuuskaavioDraft](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/edit/master/dokumentointi/perustoiminnalisuuskaavio-draft.png)
 
-![SudokuTaulukkoRakenneDraft](https://github.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/edit/master/dokumentointi/sudokutaulukkorakenne.png)
+![SudokuTaulukkoRakenneDraft](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/edit/master/dokumentointi/sudokutaulukkorakenne.png)
 
 Toimintojen lisääminen tapahtuu vaiheittain ja alussa tarkoitus on luoda perustoiminto eli sudokuiden syöttäminen ohjelmaan, joko käsin tai tiedostosta. Peruslogiikan valmistuttua voidaan luoda sen päälle graafinen käyttöliittymä.
 Vaiheissa edetään kurssiin käytettävissä olevan ajan puitteissa.
