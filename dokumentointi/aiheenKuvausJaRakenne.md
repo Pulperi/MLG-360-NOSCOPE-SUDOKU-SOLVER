@@ -1,22 +1,33 @@
-## MLG 360 NOSCOPE SUDOKU SOLVER (work name) 
+## SudokuWorldSaga (work name) 
 
-Projektin tarkoitus on l‰hte‰ tyˆst‰m‰‰n sudoku ratkaisijaa. Projektin edetess‰ tarkoitus on skooppia on tarkoitus laajentaa... **<INSERT MORE TEXT HERE>**
+Projektin tarkoitus on l√§hte√§ ty√∂st√§m√§√§n sudokupeli√§/-ohjelmaa. Projektin lopputulos tulee olemaan "kaikenkattava" sudokuohjelma, jolla pystyy ratkaisemaan sudokuita, generoimaan uusia sudokulautoja ja pelaamaan sudokuita (i.e. ratkaisemaan niit√§ k√§sin). 
 
-#### Ensimm‰inen vaihe 
+Alla napkin drafti√§ ohjelman toiminnallisuudesta ja rakenteesta... 
 
-* Toteutetaan sudokuratkaisija, jolla voi ratkaista siihen syˆtettyj‰ sudokuita.
+https://github.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/edit/master/dokumentointi/kayttoliittyma-draft.png
 
-**K‰ytt‰j‰n toiminnot:**
-* Sudokun syˆtt‰minen manuaalisesti graafisen k‰yttˆliittym‰n kautta
+https://github.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/edit/master/dokumentointi/perustoiminnalisuuskaavio-draft.png
+
+https://github.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/edit/master/dokumentointi/sudokutaulukkorakenne.png
+
+Toimintojen lis√§√§minen tapahtuu vaiheittain ja alussa tarkoitus on luoda perustoiminto eli sudokuiden sy√∂tt√§minen ohjelmaan, joko k√§sin tai tiedostosta. Peruslogiikan valmistuttua voidaan luoda sen p√§√§lle graafinen k√§ytt√∂liittym√§.
+Vaiheissa edet√§√§n kurssiin k√§ytett√§viss√§ olevan ajan puitteissa.
+
+#### Ensimm√§inen vaihe 
+
+* Toteutetaan sudokuratkaisija, jolla voi ratkaista siihen sy√∂tettyj√§ sudokuita.
+
+**K√§ytt√§j√§n toiminnot:**
+* Sudokun sy√∂tt√§minen manuaalisesti graafisen k√§ytt√∂liittym√§n kautta
 * Sudokun lataaminen tiedostosta
-* Syˆtetyn sudokun ratkaiseminen
+* Sy√∂tetyn sudokun ratkaiseminen
 * ...
 
 #### Toinen vaihe
 
-* Lis‰t‰‰n mahdollisuus luoda uusia sudokuita, joilla uniikki ratkaisu.
+* Lis√§t√§√§n mahdollisuus luoda uusia sudokuita, joilla uniikki ratkaisu.
 
-**K‰ytt‰j‰n lis‰toiminnot:**
+**K√§ytt√§j√§n lis√§toiminnot:**
 * Sudokujen generointi (mahdollisuus vaikuttaa generoitujen sudokuiden vaikeuteen)
 * Generoitujen sudokuiden tallennus tiedostoon
 
