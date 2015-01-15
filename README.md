@@ -1,2 +1,2 @@
 # MLG-360-NOSCOPE-SUDOKU-SOLVER
-REPOTREENI TEST GIT PUSH
+See dokumentointi folder for more info
