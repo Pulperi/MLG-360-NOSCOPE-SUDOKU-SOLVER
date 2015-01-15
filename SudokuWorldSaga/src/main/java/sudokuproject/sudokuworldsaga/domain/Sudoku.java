@@ -6,6 +6,7 @@ package sudokuproject.sudokuworldsaga.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.lang.StringBuilder;
 
 /**
  *
@@ -16,15 +17,36 @@ public class Sudoku {
     private int[][] sudoku;
     private int rows, cols;
     
-    public Sudoku(int cols, int rows, String[] dataString) {
+    public Sudoku(int cols, int rows, String[] dataString) throws IllegalArgumentException {
+        if (cols <= 1 || rows <= 1) {
+            throw (new IllegalArgumentException("Too small"));
+        }
         this.rows = rows;
         this.cols = cols;
         sudoku = new int[cols*rows][];
         parseData(dataString);
     }
 
+    // Make new empty sudoku with all cell values set to zero
     
-    public Sudoku(Sudoku sudoku) {
+    public Sudoku(int cols, int rows) throws IllegalArgumentException  {
+        if (cols <= 1 || rows <= 1) {
+            throw (new IllegalArgumentException("Too small"));
+        }
+        this.rows = rows;
+        this.cols = cols;
+        this.sudoku = new int[cols*rows][];
+        for (int i = 0; i < rows*cols; i++) {
+            int[] newSubset = new int[rows*cols];
+            Arrays.fill(newSubset, 0);
+            this.sudoku[i] = newSubset;
+        }
+    }
+    
+    public Sudoku(Sudoku sudoku) throws IllegalArgumentException  {
+        if (sudoku == null) {
+            throw new IllegalArgumentException("Source sudoku is null");
+        }
         this.cols = sudoku.cols;
         this.rows = sudoku.rows;
         this.sudoku = new int[cols*rows][];
@@ -57,13 +79,13 @@ public class Sudoku {
         return sudoku[findSubsetIndex(x,y)][findCellIndex(x,y)];
     }
     
-    public int findSubsetIndex(int x, int y) {
+    private int findSubsetIndex(int x, int y) {
         int rowFactor = ((y+1)-y%rows)/rows;
         int columnFactor = ((x+1)-x%cols)/cols;
         return columnFactor + rows*rowFactor;
     }
     
-    public int findCellIndex(int x, int y) {
+    private int findCellIndex(int x, int y) {
         int row = y%rows;
         int col = x%cols;
         return col+cols*row;
@@ -85,7 +107,7 @@ public class Sudoku {
         String sudokuString = "";
         for (int i = 0; i < rows*cols; i++) {
             if (i%rows == 0 && i != 0) {
-                sudokuString+="-----------\n";
+                sudokuString+= lineRow();
             }
             for (int j = 0; j < rows*cols; j++) {
                 if (j%cols == 0 && j != 0) {
@@ -100,7 +122,6 @@ public class Sudoku {
             }
             sudokuString+="\n";
         }
-        
         return sudokuString;
     }
 
@@ -160,5 +181,19 @@ public class Sudoku {
         sudoku[findSubsetIndex(x,y)][findCellIndex(x,y)] = value;
     }
 
+    private boolean isInRange(int x, int y) {
+        return ((x >= 0 || x < this.cols) 
+                && (y >= 0 || y < this.rows))  
+                ? (true) : (false);
+    }
     
+    private String lineRow() {
+        StringBuilder string = new StringBuilder("");
+        String c = "-";
+        for (int i = 0; i < (cols + 1) * rows - 1; i++) {
+            string.append(c);
+        }
+        string.append("\n");
+        return string.toString();
+    }
 }
