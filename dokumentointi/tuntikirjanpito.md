@@ -7,3 +7,6 @@
 * 15/01/2015 //  (~2 tuntia)
   * Sudoku luokan kehitystä ja JUnit testereitä
   * drafti sudokun taulukkorakenteesta
+
+* 22/01/2015 // (~4 tuntia)
+  * SudokuSolver luokka toimii ja muutamat testerit sille tehty
