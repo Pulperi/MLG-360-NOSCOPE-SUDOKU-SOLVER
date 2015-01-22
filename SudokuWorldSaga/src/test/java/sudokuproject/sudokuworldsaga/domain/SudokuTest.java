@@ -212,4 +212,36 @@ public class SudokuTest {
         }
         return sudoku;
     }
+
+    @Test
+    public void testGetRows() {
+    }
+
+    @Test
+    public void testGetCols() {
+    }
+
+    @Test
+    public void testGetXY() {
+    }
+
+    @Test
+    public void testToString() {
+    }
+
+    @Test
+    public void testGetEntries() {
+    }
+
+    @Test
+    public void testHashCode() {
+    }
+
+    @Test
+    public void testEquals() {
+    }
+
+    @Test
+    public void testSet() {
+    }
 }

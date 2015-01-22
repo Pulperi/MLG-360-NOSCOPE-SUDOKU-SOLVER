@@ -17,9 +17,22 @@ public class Sudoku {
     private int[][] sudoku;
     private int rows, cols;
     
+    // Possible cell values
+    // VALUESET[5] = 5
+    // VALUESET[12] = c
+    // ...
+    
+    private static String[] VALUESET = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+                                        "a", "b", "c", "d", "e", "e", "f", "g", "h", "i", 
+                                        "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", 
+                                        "t", "u", "v", "x", "y", "z"}; 
+    
     public Sudoku(int cols, int rows, String[] dataString) throws IllegalArgumentException {
         if (cols <= 1 || rows <= 1) {
             throw (new IllegalArgumentException("Too small"));
+        }
+        if (dataString == null) {
+            throw (new IllegalArgumentException("Datastring null"));
         }
         this.rows = rows;
         this.cols = cols;
@@ -75,7 +88,10 @@ public class Sudoku {
         return cols;
     }
     
-    public int getXY(int x, int y) {
+    public int getXY(int x, int y) throws IllegalArgumentException {
+        if (!isInRange(x,y)) {
+            throw new IllegalArgumentException("x and/or y not in range");
+        }
         return sudoku[findSubsetIndex(x,y)][findCellIndex(x,y)];
     }
     
@@ -125,10 +141,19 @@ public class Sudoku {
         return sudokuString;
     }
 
-    public ArrayList<Integer> getEntries(int x, int y) {
+    
+    // Returns a ArrayList of possible entries in a given cell x,y
+    public ArrayList<Integer> getEntries(int x, int y) throws IllegalArgumentException{
+        if (!isInRange(x,y)) {
+            throw new IllegalArgumentException("x and/or y not in range");
+        }
         ArrayList<Integer> validEntries = new ArrayList<Integer>();
         ArrayList<Integer> falseEntries = new ArrayList<Integer>();
         // find all the numbers already in the subset
+        
+        // FIXED VALUE 10 SHOULD BE DYNAMIC DEPENDING ON SUDOKU SIZE
+        // [1,...,9,a,...z] (scandics?) 
+        
         for (int i = 1; i < 10; i++) {
             validEntries.add(i);
         }
