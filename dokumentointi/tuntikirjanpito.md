@@ -14,5 +14,5 @@
 * 30/01/2015 // (~5 tuntia)
   * FileManager luokka ja sen testereitä
   * Käyttöliittymän kehitys aloitettu 
-  ** Tyhjän / valmiin (tiedostosta) sudokun lataus onnistuu
-  ** Ladatun sudokun ratkaiseminen toimii
+   * Tyhjän / valmiin (tiedostosta) sudokun lataus onnistuu
+   * Ladatun sudokun ratkaiseminen toimii
