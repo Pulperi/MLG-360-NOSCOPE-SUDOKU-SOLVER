@@ -18,7 +18,7 @@ import sudokuproject.sudokuworldsaga.fileio.FileManager;
  * PROOF OF CONCEPT > > NOT FINAL
  * 
  */
-public class UIManager extends javax.swing.JFrame {
+public class SudokuWorldSaga extends javax.swing.JFrame {
 
     private Sudoku sudoku;
     private JFileChooser fc = new JFileChooser();
@@ -26,7 +26,7 @@ public class UIManager extends javax.swing.JFrame {
     /**
      * Creates new form GameGUIManager
      */
-    public UIManager() {
+    public SudokuWorldSaga() {
         initComponents();
     }
 
@@ -167,7 +167,7 @@ public class UIManager extends javax.swing.JFrame {
 
     private void loadSudokuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadSudokuButtonActionPerformed
         sudokuArea.setText("Opening");
-        int returnVal = fc.showOpenDialog(UIManager.this);
+        int returnVal = fc.showOpenDialog(SudokuWorldSaga.this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = fc.getSelectedFile();
             sudoku = FileManager.loadSudokuFromFile(file);
@@ -202,20 +202,20 @@ public class UIManager extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UIManager.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SudokuWorldSaga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UIManager.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SudokuWorldSaga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UIManager.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SudokuWorldSaga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UIManager.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SudokuWorldSaga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UIManager().setVisible(true);
+                new SudokuWorldSaga().setVisible(true);
             }
         });
     }

@@ -14,7 +14,7 @@ import sudokuproject.sudokuworldsaga.fileio.FileManager;
  */
 public class App 
 {
-    public static void main( String[] args ) {
+    public static void runTests() {
         
         Sudoku sudoku = FileManager.loadSudokuFromFile(new File("testFiles/testSudokuFile.sudoku"));
         
