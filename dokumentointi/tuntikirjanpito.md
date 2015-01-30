@@ -1,18 +1,18 @@
 #### TUNTIKIRJANPITO
 * 14/01/2015 //  (~3 tuntia)
-  * Projekti-idean kehitystä ja kehityssoftan setuppia
-  * Käyttöliittymä drafti
+  * Projekti-idean kehitystÃ¤ ja kehityssoftan setuppia
+  * KÃ¤yttÃ¶liittymÃ¤ drafti
   * drafti luokkarakenteesta/toiminnallisuudesta
 
 * 15/01/2015 //  (~2 tuntia)
-  * Sudoku luokan kehitystä ja JUnit testereitä
+  * Sudoku luokan kehitystÃ¤ ja JUnit testereitÃ¤
   * drafti sudokun taulukkorakenteesta
 
 * 22/01/2015 // (~4 tuntia)
   * SudokuSolver luokka toimii ja muutamat testerit sille tehty
 
 * 30/01/2015 // (~5 tuntia)
-  * FileManager luokka ja sen testereitä
-  * Käyttöliittymän kehitys aloitettu 
-   * Tyhjän / valmiin (tiedostosta) sudokun lataus onnistuu
-   * Ladatun sudokun ratkaiseminen toimii
+  * FileManager luokka ja sen testereitÃ¤
+  * KÃ¤yttÃ¶liittymÃ¤n kehitys aloitettu 
+    * TyhjÃ¤n / valmiin (tiedostosta) sudokun lataus onnistuu
+    * Ladatun sudokun ratkaiseminen toimii
