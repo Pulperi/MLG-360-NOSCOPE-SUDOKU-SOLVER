@@ -6,7 +6,6 @@ package sudokuproject.sudokuworldsaga.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.lang.StringBuilder;
 
 /**
  *
@@ -22,22 +21,25 @@ public class Sudoku {
     // VALUESET[12] = c
     // ...
     
-    private static String[] VALUESET = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-                                        "a", "b", "c", "d", "e", "e", "f", "g", "h", "i", 
-                                        "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", 
-                                        "t", "u", "v", "x", "y", "z"}; 
+    private static String[] VALUESET = {"0", 
+                                        "1", "2", "3", "4", "5", 
+                                        "6", "7", "8", "9", "a", 
+                                        "b", "c", "d", "e", "e", 
+                                        "f", "g", "h", "i", "j", 
+                                        "k", "l", "m", "n", "o", 
+                                        "p", "q", "r", "s", "t", 
+                                        "u", "v", "x", "y", "z"}; 
     
-    public Sudoku(int cols, int rows, String[] dataString) throws IllegalArgumentException {
+    public Sudoku(int cols, int rows, int[][] sudokuDataArray) throws IllegalArgumentException {
         if (cols <= 1 || rows <= 1) {
             throw (new IllegalArgumentException("Too small"));
         }
-        if (dataString == null) {
+        if (sudokuDataArray == null) {
             throw (new IllegalArgumentException("Datastring null"));
         }
         this.rows = rows;
         this.cols = cols;
-        sudoku = new int[cols*rows][];
-        parseData(dataString);
+        sudoku = sudokuDataArray;
     }
 
     // Make new empty sudoku with all cell values set to zero
@@ -67,17 +69,6 @@ public class Sudoku {
             int[] newSubset = new int[rows*cols];
             System.arraycopy(sudoku.sudoku[i], 0, newSubset, 0, rows*cols);
             this.sudoku[i] = newSubset;
-        }
-    }
-    
-    private void parseData(String[] dataString) {
-        for (int i = 0; i < rows*cols; i++) {
-            int[] newSubset = new int[rows*cols];
-            String[] subData = dataString[i].split(",");
-            for (int j = 0; j < rows*cols; j++) {
-                newSubset[j] = Integer.parseInt(subData[j]);
-            }
-            sudoku[i] = newSubset;
         }
     }
     
@@ -220,5 +211,13 @@ public class Sudoku {
         }
         string.append("\n");
         return string.toString();
+    }
+
+    public int[][] getData() {
+        int[][] copy = new int[sudoku.length][];
+        for (int i = 0; i < sudoku.length; i++) {
+            copy[i] = Arrays.copyOf(sudoku[i], sudoku[i].length);
+        }
+        return copy;
     }
 }

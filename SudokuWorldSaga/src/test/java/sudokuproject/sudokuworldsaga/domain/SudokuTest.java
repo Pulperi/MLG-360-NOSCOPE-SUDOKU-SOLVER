@@ -4,7 +4,6 @@
  */
 package sudokuproject.sudokuworldsaga.domain;
 
-import java.util.ArrayList;
 import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -38,21 +37,6 @@ public class SudokuTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of getXY method, of class Sudoku.
-     
-    @Test
-    public void testGetXY() {
-        System.out.println("getXY");
-        int x = 0;
-        int y = 0;
-        Sudoku instance = null;
-        int expResult = 0;
-        int result = instance.getXY(x, y);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
 
     /**
      * Test of isSolved method, of class Sudoku.
@@ -138,70 +122,6 @@ public class SudokuTest {
     }
     
     
-    /**
-     * Test of getEntries method, of class Sudoku.
-     
-    @Test
-    public void testGetEntries() {
-        System.out.println("getEntries");
-        int x = 0;
-        int y = 0;
-        Sudoku instance = null;
-        ArrayList expResult = null;
-        ArrayList result = instance.getEntries(x, y);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of hashCode method, of class Sudoku.
-     
-    @Test
-    public void testHashCode() {
-        System.out.println("hashCode");
-        Sudoku instance = null;
-        int expResult = 0;
-        int result = instance.hashCode();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of equals method, of class Sudoku.
-     
-    @Test
-    public void testEquals() {
-        System.out.println("equals");
-        Object obj = null;
-        Sudoku instance = null;
-        boolean expResult = false;
-        boolean result = instance.equals(obj);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of set method, of class Sudoku.
-     
-    @Test
-    public void testSet() {
-        System.out.println("set");
-        int x = 0;
-        int y = 0;
-        int value = 0;
-        Sudoku instance = null;
-        instance.set(x, y, value);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }*/
-    
-    
-    
-    
-    
     
     private Sudoku genSudoku(int rows, int cols) {
         Sudoku sudoku = new Sudoku(rows, cols);
@@ -211,37 +131,5 @@ public class SudokuTest {
             }
         }
         return sudoku;
-    }
-
-    @Test
-    public void testGetRows() {
-    }
-
-    @Test
-    public void testGetCols() {
-    }
-
-    @Test
-    public void testGetXY() {
-    }
-
-    @Test
-    public void testToString() {
-    }
-
-    @Test
-    public void testGetEntries() {
-    }
-
-    @Test
-    public void testHashCode() {
-    }
-
-    @Test
-    public void testEquals() {
-    }
-
-    @Test
-    public void testSet() {
     }
 }

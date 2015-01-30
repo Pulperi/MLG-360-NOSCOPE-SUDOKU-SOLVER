@@ -1,9 +1,12 @@
 package sudokuproject.sudokuworldsaga;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import sudokuproject.sudokuworldsaga.domain.Sudoku;
 import sudokuproject.sudokuworldsaga.domain.SudokuSolver;
+import sudokuproject.sudokuworldsaga.fileio.FileManager;
 
 /**
  * Hello world!
@@ -11,16 +14,27 @@ import sudokuproject.sudokuworldsaga.domain.SudokuSolver;
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
-       
-        String[] sudokuString = {"0,0,5,0,7,8,0,1,0", "1,0,0,0,0,6,0,2,0", "0,0,0,2,3,0,0,0,8",
-                                 "0,0,0,0,5,9,2,0,0", "0,3,0,0,0,0,0,4,0", "0,0,2,8,4,0,0,0,0",
-                                 "1,0,0,0,6,3,0,0,0", "0,9,0,7,0,0,0,0,3", "0,8,0,9,5,0,1,0,0"};
+    public static void main( String[] args ) {
+        
+        Sudoku sudoku = FileManager.loadSudokuFromFile(new File("testFiles/testSudokuFile.sudoku"));
+        
+        System.out.println(sudoku.toString());
+        
+        
+        /*
+        int[][] sudokuDataString = {{0,0,5,0,7,8,0,1,0}, 
+                                    {1,0,0,0,0,6,0,2,0}, 
+                                    {0,0,0,2,3,0,0,0,8},
+                                    {0,0,0,0,5,9,2,0,0}, 
+                                    {0,3,0,0,0,0,0,4,0}, 
+                                    {0,0,2,8,4,0,0,0,0},
+                                    {1,0,0,0,6,3,0,0,0}, 
+                                    {0,9,0,7,0,0,0,0,3}, 
+                                    {0,8,0,9,5,0,1,0,0}};
         Sudoku sudoku;
         
         try {
-            sudoku = new Sudoku(3,3, sudokuString);
+            sudoku = new Sudoku(3,3, sudokuDataString);
             String string = "Henri's super sudoku solver app - #SUDOKUWORLDSAGA";
             System.out.println(underLine(string) + "\n\n" + underLine("Unsolved sudoku:") + "\n" + sudoku.toString());
             System.out.print("Running");
@@ -29,7 +43,7 @@ public class App
             
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());
-        }
+        }*/
     }
     
     private static String underLine(String length) {

@@ -1,0 +1,3384 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+border: 1px solid #dddddd;
+padding-top: 10px;
+padding-right: 5px;
+padding-left: 5px;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+</style>
+
+</head>
+<body>
+
+
+<h1>Sudoku.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_1'/>
+1
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_1'></a>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_2'/>
+2
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_2'></a>
+</td>
+<td class=''><pre><span  class=''> * To change this template, choose Tools | Templates</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_3'/>
+3
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_3'></a>
+</td>
+<td class=''><pre><span  class=''> * and open the template in the editor.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_4'/>
+4
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_4'></a>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_5'/>
+5
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_5'></a>
+</td>
+<td class=''><pre><span  class=''>package sudokuproject.sudokuworldsaga.domain;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_6'/>
+6
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_6'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_7'/>
+7
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_7'></a>
+</td>
+<td class=''><pre><span  class=''>import java.util.ArrayList;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_8'/>
+8
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_8'></a>
+</td>
+<td class=''><pre><span  class=''>import java.util.Arrays;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_9'/>
+9
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_9'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_10'/>
+10
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_10'></a>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_11'/>
+11
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_11'></a>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_12'/>
+12
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_12'></a>
+</td>
+<td class=''><pre><span  class=''> * @author Henri</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_13'/>
+13
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_13'></a>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_14'/>
+14
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_14'></a>
+</td>
+<td class=''><pre><span  class=''>public class Sudoku {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_15'/>
+15
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_15'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_16'/>
+16
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_16'></a>
+</td>
+<td class=''><pre><span  class=''>    private int[][] sudoku;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_17'/>
+17
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_17'></a>
+</td>
+<td class=''><pre><span  class=''>    private int rows, cols;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_18'/>
+18
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_18'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_19'/>
+19
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_19'></a>
+</td>
+<td class=''><pre><span  class=''>    // Possible cell values</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_20'/>
+20
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_20'></a>
+</td>
+<td class=''><pre><span  class=''>    // VALUESET[5] = 5</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_21'/>
+21
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_21'></a>
+</td>
+<td class=''><pre><span  class=''>    // VALUESET[12] = c</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_22'/>
+22
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_22'></a>
+</td>
+<td class=''><pre><span  class=''>    // ...</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_23'/>
+23
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_23'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_24'/>
+24
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_24'></a>
+</td>
+<td class='covered'><pre><span  class=''>    private static String[] VALUESET = {&#34;0&#34;, </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_25'/>
+25
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_25'></a>
+</td>
+<td class=''><pre><span  class=''>                                        &#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;, &#34;5&#34;, </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_26'/>
+26
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_26'></a>
+</td>
+<td class=''><pre><span  class=''>                                        &#34;6&#34;, &#34;7&#34;, &#34;8&#34;, &#34;9&#34;, &#34;a&#34;, </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_27'/>
+27
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_27'></a>
+</td>
+<td class=''><pre><span  class=''>                                        &#34;b&#34;, &#34;c&#34;, &#34;d&#34;, &#34;e&#34;, &#34;e&#34;, </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_28'/>
+28
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_28'></a>
+</td>
+<td class=''><pre><span  class=''>                                        &#34;f&#34;, &#34;g&#34;, &#34;h&#34;, &#34;i&#34;, &#34;j&#34;, </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_29'/>
+29
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_29'></a>
+</td>
+<td class=''><pre><span  class=''>                                        &#34;k&#34;, &#34;l&#34;, &#34;m&#34;, &#34;n&#34;, &#34;o&#34;, </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_30'/>
+30
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_30'></a>
+</td>
+<td class=''><pre><span  class=''>                                        &#34;p&#34;, &#34;q&#34;, &#34;r&#34;, &#34;s&#34;, &#34;t&#34;, </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_31'/>
+31
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_31'></a>
+</td>
+<td class=''><pre><span  class=''>                                        &#34;u&#34;, &#34;v&#34;, &#34;x&#34;, &#34;y&#34;, &#34;z&#34;}; </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_32'/>
+32
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_32'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_33'/>
+33
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_33'></a>
+</td>
+<td class='covered'><pre><span  class=''>    public Sudoku(int cols, int rows, int[][] sudokuDataArray) throws IllegalArgumentException {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_34'/>
+34
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_34'>4</a>
+</td>
+<td class='covered'><pre><span  class='survived'>        if (cols &#60;= 1 || rows &#60;= 1) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_35'/>
+35
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_35'></a>
+</td>
+<td class='uncovered'><pre><span  class=''>            throw (new IllegalArgumentException(&#34;Too small&#34;));</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_36'/>
+36
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_36'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_37'/>
+37
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_37'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (sudokuDataArray == null) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_38'/>
+38
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_38'></a>
+</td>
+<td class='uncovered'><pre><span  class=''>            throw (new IllegalArgumentException(&#34;Datastring null&#34;));</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_39'/>
+39
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_39'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_40'/>
+40
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_40'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.rows = rows;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_41'/>
+41
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_41'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.cols = cols;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_42'/>
+42
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_42'></a>
+</td>
+<td class='covered'><pre><span  class=''>        sudoku = sudokuDataArray;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_43'/>
+43
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_43'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_44'/>
+44
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_44'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_45'/>
+45
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_45'></a>
+</td>
+<td class=''><pre><span  class=''>    // Make new empty sudoku with all cell values set to zero</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_46'/>
+46
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_46'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_47'/>
+47
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_47'></a>
+</td>
+<td class='covered'><pre><span  class=''>    public Sudoku(int cols, int rows) throws IllegalArgumentException  {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_48'/>
+48
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_48'>4</a>
+</td>
+<td class='covered'><pre><span  class='survived'>        if (cols &#60;= 1 || rows &#60;= 1) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_49'/>
+49
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_49'></a>
+</td>
+<td class='uncovered'><pre><span  class=''>            throw (new IllegalArgumentException(&#34;Too small&#34;));</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_50'/>
+50
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_50'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_51'/>
+51
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_51'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.rows = rows;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_52'/>
+52
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_52'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.cols = cols;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_53'/>
+53
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_53'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        this.sudoku = new int[cols*rows][];</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_54'/>
+54
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_54'>4</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int i = 0; i &#60; rows*cols; i++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_55'/>
+55
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_55'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            int[] newSubset = new int[rows*cols];</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_56'/>
+56
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_56'>1</a>
+</td>
+<td class='covered'><pre><span  class='survived'>            Arrays.fill(newSubset, 0);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_57'/>
+57
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_57'></a>
+</td>
+<td class='covered'><pre><span  class=''>            this.sudoku[i] = newSubset;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_58'/>
+58
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_58'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_59'/>
+59
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_59'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_60'/>
+60
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_60'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_61'/>
+61
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_61'></a>
+</td>
+<td class='covered'><pre><span  class=''>    public Sudoku(Sudoku sudoku) throws IllegalArgumentException  {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_62'/>
+62
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_62'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (sudoku == null) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_63'/>
+63
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_63'></a>
+</td>
+<td class='uncovered'><pre><span  class=''>            throw new IllegalArgumentException(&#34;Source sudoku is null&#34;);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_64'/>
+64
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_64'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_65'/>
+65
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_65'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.cols = sudoku.cols;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_66'/>
+66
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_66'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.rows = sudoku.rows;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_67'/>
+67
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_67'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        this.sudoku = new int[cols*rows][];</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_68'/>
+68
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_68'>4</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int i = 0; i &#60; rows*cols; i++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_69'/>
+69
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_69'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            int[] newSubset = new int[rows*cols];</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_70'/>
+70
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_70'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            System.arraycopy(sudoku.sudoku[i], 0, newSubset, 0, rows*cols);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_71'/>
+71
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_71'></a>
+</td>
+<td class='covered'><pre><span  class=''>            this.sudoku[i] = newSubset;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_72'/>
+72
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_72'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_73'/>
+73
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_73'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_74'/>
+74
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_74'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_75'/>
+75
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_75'></a>
+</td>
+<td class=''><pre><span  class=''>    public int getRows() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_76'/>
+76
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_76'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return rows;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_77'/>
+77
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_77'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_78'/>
+78
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_78'></a>
+</td>
+<td class=''><pre><span  class=''>    public int getCols() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_79'/>
+79
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_79'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return cols;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_80'/>
+80
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_80'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_81'/>
+81
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_81'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_82'/>
+82
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_82'></a>
+</td>
+<td class=''><pre><span  class=''>    public int getXY(int x, int y) throws IllegalArgumentException {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_83'/>
+83
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_83'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (!isInRange(x,y)) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_84'/>
+84
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_84'></a>
+</td>
+<td class='uncovered'><pre><span  class=''>            throw new IllegalArgumentException(&#34;x and/or y not in range&#34;);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_85'/>
+85
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_85'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_86'/>
+86
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_86'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return sudoku[findSubsetIndex(x,y)][findCellIndex(x,y)];</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_87'/>
+87
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_87'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_88'/>
+88
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_88'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_89'/>
+89
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_89'></a>
+</td>
+<td class=''><pre><span  class=''>    private int findSubsetIndex(int x, int y) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_90'/>
+90
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_90'>4</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        int rowFactor = ((y+1)-y%rows)/rows;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_91'/>
+91
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_91'>4</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        int columnFactor = ((x+1)-x%cols)/cols;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_92'/>
+92
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_92'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return columnFactor + rows*rowFactor;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_93'/>
+93
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_93'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_94'/>
+94
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_94'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_95'/>
+95
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_95'></a>
+</td>
+<td class=''><pre><span  class=''>    private int findCellIndex(int x, int y) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_96'/>
+96
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_96'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        int row = y%rows;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_97'/>
+97
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_97'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        int col = x%cols;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_98'/>
+98
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_98'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return col+cols*row;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_99'/>
+99
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_99'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_100'/>
+100
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_100'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_101'/>
+101
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_101'></a>
+</td>
+<td class=''><pre><span  class=''>    public boolean isSolved() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_102'/>
+102
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_102'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int[] i : sudoku) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_103'/>
+103
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_103'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            for (int j : i) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_104'/>
+104
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_104'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                if (j == 0) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_105'/>
+105
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_105'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                    return false;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_106'/>
+106
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_106'></a>
+</td>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_107'/>
+107
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_107'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_108'/>
+108
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_108'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_109'/>
+109
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_109'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return true;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_110'/>
+110
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_110'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_111'/>
+111
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_111'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_112'/>
+112
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_112'></a>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_113'/>
+113
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_113'></a>
+</td>
+<td class=''><pre><span  class=''>    public String toString() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_114'/>
+114
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_114'></a>
+</td>
+<td class='covered'><pre><span  class=''>        String sudokuString = &#34;&#34;;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_115'/>
+115
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_115'>4</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int i = 0; i &#60; rows*cols; i++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_116'/>
+116
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_116'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (i%rows == 0 &#38;&#38; i != 0) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_117'/>
+117
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_117'></a>
+</td>
+<td class='covered'><pre><span  class=''>                sudokuString+= lineRow();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_118'/>
+118
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_118'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_119'/>
+119
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_119'>4</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            for (int j = 0; j &#60; rows*cols; j++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_120'/>
+120
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_120'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                if (j%cols == 0 &#38;&#38; j != 0) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_121'/>
+121
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_121'></a>
+</td>
+<td class='covered'><pre><span  class=''>                    sudokuString+=&#34;|&#34;;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_122'/>
+122
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_122'></a>
+</td>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_123'/>
+123
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_123'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                if (getXY(j,i) == 10) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_124'/>
+124
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_124'></a>
+</td>
+<td class='uncovered'><pre><span  class=''>                    sudokuString+=&#34; &#34;;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_125'/>
+125
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_125'></a>
+</td>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_126'/>
+126
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_126'></a>
+</td>
+<td class=''><pre><span  class=''>                else {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_127'/>
+127
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_127'></a>
+</td>
+<td class='covered'><pre><span  class=''>                    sudokuString+=getXY(j,i);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_128'/>
+128
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_128'></a>
+</td>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_129'/>
+129
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_129'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_130'/>
+130
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_130'></a>
+</td>
+<td class='covered'><pre><span  class=''>            sudokuString+=&#34;\n&#34;;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_131'/>
+131
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_131'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_132'/>
+132
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_132'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return sudokuString;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_133'/>
+133
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_133'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_134'/>
+134
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_134'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_135'/>
+135
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_135'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_136'/>
+136
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_136'></a>
+</td>
+<td class=''><pre><span  class=''>    // Returns a ArrayList of possible entries in a given cell x,y</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_137'/>
+137
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_137'></a>
+</td>
+<td class=''><pre><span  class=''>    public ArrayList&#60;Integer&#62; getEntries(int x, int y) throws IllegalArgumentException{</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_138'/>
+138
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_138'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (!isInRange(x,y)) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_139'/>
+139
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_139'></a>
+</td>
+<td class='uncovered'><pre><span  class=''>            throw new IllegalArgumentException(&#34;x and/or y not in range&#34;);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_140'/>
+140
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_140'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_141'/>
+141
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_141'></a>
+</td>
+<td class='covered'><pre><span  class=''>        ArrayList&#60;Integer&#62; validEntries = new ArrayList&#60;Integer&#62;();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_142'/>
+142
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_142'></a>
+</td>
+<td class='covered'><pre><span  class=''>        ArrayList&#60;Integer&#62; falseEntries = new ArrayList&#60;Integer&#62;();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_143'/>
+143
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_143'></a>
+</td>
+<td class=''><pre><span  class=''>        // find all the numbers already in the subset</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_144'/>
+144
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_144'></a>
+</td>
+<td class=''><pre><span  class=''>        </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_145'/>
+145
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_145'></a>
+</td>
+<td class=''><pre><span  class=''>        // FIXED VALUE 10 SHOULD BE DYNAMIC DEPENDING ON SUDOKU SIZE</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_146'/>
+146
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_146'></a>
+</td>
+<td class=''><pre><span  class=''>        // [1,...,9,a,...z] (scandics?) </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_147'/>
+147
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_147'></a>
+</td>
+<td class=''><pre><span  class=''>        </span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_148'/>
+148
+</td>
+<td class='uncertain'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_148'>3</a>
+</td>
+<td class='covered'><pre><span  class='uncertain'>        for (int i = 1; i &#60; 10; i++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_149'/>
+149
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_149'></a>
+</td>
+<td class='covered'><pre><span  class=''>            validEntries.add(i);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_150'/>
+150
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_150'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_151'/>
+151
+</td>
+<td class='uncertain'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_151'>3</a>
+</td>
+<td class='covered'><pre><span  class='uncertain'>        for (int i : sudoku[findSubsetIndex(x,y)]) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_152'/>
+152
+</td>
+<td class='uncertain'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_152'>2</a>
+</td>
+<td class='covered'><pre><span  class='uncertain'>            if (!falseEntries.contains(i) &#38;&#38; i != 0) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_153'/>
+153
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_153'></a>
+</td>
+<td class='covered'><pre><span  class=''>                falseEntries.add(i);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_154'/>
+154
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_154'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_155'/>
+155
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_155'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_156'/>
+156
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_156'></a>
+</td>
+<td class=''><pre><span  class=''>        // find all the numbers already on the row</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_157'/>
+157
+</td>
+<td class='uncertain'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_157'>4</a>
+</td>
+<td class='covered'><pre><span  class='uncertain'>        for (int i = 0; i &#60; rows*cols; i++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_158'/>
+158
+</td>
+<td class='uncertain'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_158'>2</a>
+</td>
+<td class='covered'><pre><span  class='uncertain'>            if (!falseEntries.contains(getXY(i,y)) &#38;&#38; getXY(i,y) != 0) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_159'/>
+159
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_159'></a>
+</td>
+<td class='covered'><pre><span  class=''>                falseEntries.add(getXY(i,y));</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_160'/>
+160
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_160'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_161'/>
+161
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_161'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_162'/>
+162
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_162'></a>
+</td>
+<td class=''><pre><span  class=''>        // find all the numbers already on the column</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_163'/>
+163
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_163'>4</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int i = 0; i &#60; rows*cols; i++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_164'/>
+164
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_164'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (!falseEntries.contains(getXY(x,i)) &#38;&#38; getXY(x,i) != 0) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_165'/>
+165
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_165'></a>
+</td>
+<td class='covered'><pre><span  class=''>                falseEntries.add(getXY(x,i));</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_166'/>
+166
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_166'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_167'/>
+167
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_167'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_168'/>
+168
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_168'></a>
+</td>
+<td class='covered'><pre><span  class=''>        validEntries.removeAll(falseEntries);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_169'/>
+169
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_169'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return validEntries;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_170'/>
+170
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_170'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_171'/>
+171
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_171'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_172'/>
+172
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_172'></a>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_173'/>
+173
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_173'></a>
+</td>
+<td class=''><pre><span  class=''>    public int hashCode() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_174'/>
+174
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_174'></a>
+</td>
+<td class='uncovered'><pre><span  class=''>        int hash = 7;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_175'/>
+175
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_175'>2</a>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        hash = 89 * hash + Arrays.deepHashCode(this.sudoku);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_176'/>
+176
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_176'>1</a>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        return hash;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_177'/>
+177
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_177'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_178'/>
+178
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_178'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_179'/>
+179
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_179'></a>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_180'/>
+180
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_180'></a>
+</td>
+<td class=''><pre><span  class=''>    public boolean equals(Object obj) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_181'/>
+181
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_181'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (obj == null) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_182'/>
+182
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_182'>1</a>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            return false;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_183'/>
+183
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_183'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_184'/>
+184
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_184'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (getClass() != obj.getClass()) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_185'/>
+185
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_185'>1</a>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            return false;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_186'/>
+186
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_186'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_187'/>
+187
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_187'></a>
+</td>
+<td class='covered'><pre><span  class=''>        final Sudoku other = (Sudoku) obj;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_188'/>
+188
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_188'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (!Arrays.deepEquals(this.sudoku, other.sudoku)) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_189'/>
+189
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_189'>1</a>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            return false;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_190'/>
+190
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_190'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_191'/>
+191
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_191'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return true;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_192'/>
+192
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_192'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_193'/>
+193
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_193'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_194'/>
+194
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_194'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_195'/>
+195
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_195'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_196'/>
+196
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_196'></a>
+</td>
+<td class=''><pre><span  class=''>    public void set(int x, int y, int value) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_197'/>
+197
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_197'></a>
+</td>
+<td class='covered'><pre><span  class=''>        sudoku[findSubsetIndex(x,y)][findCellIndex(x,y)] = value;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_198'/>
+198
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_198'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_199'/>
+199
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_199'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_200'/>
+200
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_200'></a>
+</td>
+<td class=''><pre><span  class=''>    private boolean isInRange(int x, int y) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_201'/>
+201
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_201'>9</a>
+</td>
+<td class='covered'><pre><span  class='survived'>        return ((x &#62;= 0 || x &#60; this.cols) </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_202'/>
+202
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_202'></a>
+</td>
+<td class=''><pre><span  class=''>                &#38;&#38; (y &#62;= 0 || y &#60; this.rows))  </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_203'/>
+203
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_203'></a>
+</td>
+<td class=''><pre><span  class=''>                ? (true) : (false);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_204'/>
+204
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_204'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_205'/>
+205
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_205'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_206'/>
+206
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_206'></a>
+</td>
+<td class=''><pre><span  class=''>    private String lineRow() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_207'/>
+207
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_207'></a>
+</td>
+<td class='covered'><pre><span  class=''>        StringBuilder string = new StringBuilder(&#34;&#34;);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_208'/>
+208
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_208'></a>
+</td>
+<td class='covered'><pre><span  class=''>        String c = &#34;-&#34;;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_209'/>
+209
+</td>
+<td class='uncertain'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_209'>6</a>
+</td>
+<td class='covered'><pre><span  class='uncertain'>        for (int i = 0; i &#60; (cols + 1) * rows - 1; i++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_210'/>
+210
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_210'></a>
+</td>
+<td class='covered'><pre><span  class=''>            string.append(c);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_211'/>
+211
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_211'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_212'/>
+212
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_212'></a>
+</td>
+<td class='covered'><pre><span  class=''>        string.append(&#34;\n&#34;);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_213'/>
+213
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_213'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return string.toString();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_214'/>
+214
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_214'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_215'/>
+215
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_215'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_216'/>
+216
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_216'></a>
+</td>
+<td class=''><pre><span  class=''>    public int[][] getData() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_217'/>
+217
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_217'></a>
+</td>
+<td class='covered'><pre><span  class=''>        int[][] copy = new int[sudoku.length][];</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_218'/>
+218
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_218'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int i = 0; i &#60; sudoku.length; i++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_219'/>
+219
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_219'></a>
+</td>
+<td class='covered'><pre><span  class=''>            copy[i] = Arrays.copyOf(sudoku[i], sudoku[i].length);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_220'/>
+220
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_220'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_221'/>
+221
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_221'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return copy;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_222'/>
+222
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_222'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e54c60c_223'/>
+223
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_223'></a>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_34'>34</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_34'/> 
+
+<p class='SURVIVED'>changed conditional boundary : SURVIVED</p> <p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.fileio.FileManagerTest.testSudokuFileLoadSudokuFromFile(sudokuproject.sudokuworldsaga.fileio.FileManagerTest)</p> <p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.fileio.FileManagerTest.testSudokuFileLoadSudokuFromFile(sudokuproject.sudokuworldsaga.fileio.FileManagerTest)</p> <p class='SURVIVED'>changed conditional boundary : SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_37'>37</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_37'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.fileio.FileManagerTest.testSudokuFileLoadSudokuFromFile(sudokuproject.sudokuworldsaga.fileio.FileManagerTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_48'>48</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_48'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='SURVIVED'>changed conditional boundary : SURVIVED</p> <p class='SURVIVED'>changed conditional boundary : SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_53'>53</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_53'/> 
+
+<p class='KILLED'>Replaced integer multiplication with division : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_54'>54</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_54'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>changed conditional boundary : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>Replaced integer multiplication with division : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>Changed increment from 1 to -1 : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_55'>55</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_55'/> 
+
+<p class='KILLED'>Replaced integer multiplication with division : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_56'>56</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_56'/> 
+
+<p class='SURVIVED'>removed call to java/util/Arrays::fill : SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_62'>62</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_62'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveBasic(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_67'>67</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_67'/> 
+
+<p class='KILLED'>Replaced integer multiplication with division : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveBasic(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_68'>68</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_68'/> 
+
+<p class='KILLED'>Changed increment from 1 to -1 : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveBasic(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> <p class='KILLED'>changed conditional boundary : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveBasic(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> <p class='KILLED'>Replaced integer multiplication with division : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveBasic(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> <p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveBasic(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_69'>69</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_69'/> 
+
+<p class='KILLED'>Replaced integer multiplication with division : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveBasic(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_70'>70</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_70'/> 
+
+<p class='KILLED'>Replaced integer multiplication with division : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveBasic(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> <p class='KILLED'>removed call to java/lang/System::arraycopy : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveBasic(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_76'>76</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_76'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveUnsolvable(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_79'>79</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_79'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveUnsolvable(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_83'>83</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_83'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_86'>86</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_86'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_90'>90</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_90'/> 
+
+<p class='KILLED'>Replaced integer division with multiplication : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>Replaced integer modulus with multiplication : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>Replaced integer subtraction with addition : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>Replaced integer addition with subtraction : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_91'>91</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_91'/> 
+
+<p class='KILLED'>Replaced integer modulus with multiplication : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>Replaced integer addition with subtraction : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>Replaced integer subtraction with addition : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>Replaced integer division with multiplication : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_92'>92</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_92'/> 
+
+<p class='KILLED'>Replaced integer addition with subtraction : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>Replaced integer multiplication with division : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_96'>96</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_96'/> 
+
+<p class='KILLED'>Replaced integer modulus with multiplication : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_97'>97</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_97'/> 
+
+<p class='KILLED'>Replaced integer modulus with multiplication : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_98'>98</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_98'/> 
+
+<p class='KILLED'>Replaced integer multiplication with division : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>Replaced integer addition with subtraction : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_102'>102</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_102'/> 
+
+<p class='KILLED'>Changed increment from 1 to -1 : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>changed conditional boundary : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_103'>103</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_103'/> 
+
+<p class='KILLED'>changed conditional boundary : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>Changed increment from 1 to -1 : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_104'>104</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_104'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_105'>105</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_105'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_109'>109</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_109'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_115'>115</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_115'/> 
+
+<p class='KILLED'>Replaced integer multiplication with division : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>changed conditional boundary : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>Changed increment from 1 to -1 : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_116'>116</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_116'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>Replaced integer modulus with multiplication : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_119'>119</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_119'/> 
+
+<p class='KILLED'>Changed increment from 1 to -1 : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>Replaced integer multiplication with division : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>changed conditional boundary : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_120'>120</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_120'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>Replaced integer modulus with multiplication : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_123'>123</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_123'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_132'>132</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_132'/> 
+
+<p class='KILLED'>mutated return of Object value for sudokuproject/sudokuworldsaga/domain/Sudoku::toString to ( if (x != null) null else throw new RuntimeException ) : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_138'>138</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_138'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveUnsolvable(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_148'>148</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_148'/> 
+
+<p class='TIMED_OUT'>Changed increment from 1 to -1 : TIMED_OUT</p> <p class='KILLED'>changed conditional boundary : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveUnsolvable(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> <p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveBasic(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_151'>151</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_151'/> 
+
+<p class='TIMED_OUT'>negated conditional : TIMED_OUT</p> <p class='KILLED'>changed conditional boundary : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveUnsolvable(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> <p class='KILLED'>Changed increment from 1 to -1 : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveUnsolvable(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_152'>152</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_152'/> 
+
+<p class='TIMED_OUT'>negated conditional : TIMED_OUT</p> <p class='TIMED_OUT'>negated conditional : TIMED_OUT</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_157'>157</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_157'/> 
+
+<p class='TIMED_OUT'>negated conditional : TIMED_OUT</p> <p class='KILLED'>changed conditional boundary : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveBasic(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> <p class='TIMED_OUT'>Replaced integer multiplication with division : TIMED_OUT</p> <p class='KILLED'>Changed increment from 1 to -1 : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveUnsolvable(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_158'>158</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_158'/> 
+
+<p class='TIMED_OUT'>negated conditional : TIMED_OUT</p> <p class='TIMED_OUT'>negated conditional : TIMED_OUT</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_163'>163</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_163'/> 
+
+<p class='KILLED'>Changed increment from 1 to -1 : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveUnsolvable(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> <p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveUnsolvable(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> <p class='KILLED'>Replaced integer multiplication with division : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveUnsolvable(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> <p class='KILLED'>changed conditional boundary : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveUnsolvable(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_164'>164</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_164'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveUnsolvable(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> <p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveUnsolvable(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_169'>169</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_169'/> 
+
+<p class='KILLED'>mutated return of Object value for sudokuproject/sudokuworldsaga/domain/Sudoku::getEntries to ( if (x != null) null else throw new RuntimeException ) : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveUnsolvable(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_175'>175</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_175'/> 
+
+<p class='NO_COVERAGE'>Replaced integer addition with subtraction : NO_COVERAGE</p> <p class='NO_COVERAGE'>Replaced integer multiplication with division : NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_176'>176</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_176'/> 
+
+<p class='NO_COVERAGE'>replaced return of integer sized value with (x == 0 ? 1 : 0) : NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_181'>181</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_181'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveBasic(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_182'>182</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_182'/> 
+
+<p class='NO_COVERAGE'>replaced return of integer sized value with (x == 0 ? 1 : 0) : NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_184'>184</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_184'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveBasic(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_185'>185</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_185'/> 
+
+<p class='NO_COVERAGE'>replaced return of integer sized value with (x == 0 ? 1 : 0) : NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_188'>188</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_188'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveBasic(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_189'>189</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_189'/> 
+
+<p class='NO_COVERAGE'>replaced return of integer sized value with (x == 0 ? 1 : 0) : NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_191'>191</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_191'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveBasic(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_201'>201</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_201'/> 
+
+<p class='SURVIVED'>changed conditional boundary : SURVIVED</p> <p class='SURVIVED'>negated conditional : SURVIVED</p> <p class='SURVIVED'>changed conditional boundary : SURVIVED</p> <p class='SURVIVED'>changed conditional boundary : SURVIVED</p> <p class='SURVIVED'>changed conditional boundary : SURVIVED</p> <p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='SURVIVED'>negated conditional : SURVIVED</p> <p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_209'>209</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_209'/> 
+
+<p class='KILLED'>changed conditional boundary : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>Replaced integer subtraction with addition : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>Replaced integer addition with subtraction : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> <p class='TIMED_OUT'>Changed increment from 1 to -1 : TIMED_OUT</p> <p class='KILLED'>Replaced integer multiplication with division : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_213'>213</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_213'/> 
+
+<p class='KILLED'>mutated return of Object value for sudokuproject/sudokuworldsaga/domain/Sudoku::lineRow to ( if (x != null) null else throw new RuntimeException ) : KILLED -> sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_218'>218</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_218'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> sudokuproject.sudokuworldsaga.fileio.FileManagerTest.testLoadingAndSaving(sudokuproject.sudokuworldsaga.fileio.FileManagerTest)</p> <p class='KILLED'>changed conditional boundary : KILLED -> sudokuproject.sudokuworldsaga.fileio.FileManagerTest.testLoadingAndSaving(sudokuproject.sudokuworldsaga.fileio.FileManagerTest)</p> <p class='KILLED'>Changed increment from 1 to -1 : KILLED -> sudokuproject.sudokuworldsaga.fileio.FileManagerTest.testLoadingAndSaving(sudokuproject.sudokuworldsaga.fileio.FileManagerTest)</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e54c60c_221'>221</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e54c60c_221'/> 
+
+<p class='KILLED'>mutated return of Object value for sudokuproject/sudokuworldsaga/domain/Sudoku::getData to ( if (x != null) null else throw new RuntimeException ) : KILLED -> sudokuproject.sudokuworldsaga.fileio.FileManagerTest.testLoadingAndSaving(sudokuproject.sudokuworldsaga.fileio.FileManagerTest)</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+
+<li class='mutator'>MATH_MUTATOR</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveUnsolvable(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest) (0 ms)</li><li>sudokuproject.sudokuworldsaga.fileio.FileManagerTest.testLoadingAndSaving(sudokuproject.sudokuworldsaga.fileio.FileManagerTest) (5 ms)</li><li>sudokuproject.sudokuworldsaga.fileio.FileManagerTest.testSudokuFileLoadSudokuFromFile(sudokuproject.sudokuworldsaga.fileio.FileManagerTest) (1 ms)</li><li>sudokuproject.sudokuworldsaga.domain.SudokuTest.sudokuproject.sudokuworldsaga.domain.SudokuTest (107 ms)</li><li>sudokuproject.sudokuworldsaga.domain.SudokuSolverTest.testSolveBasic(sudokuproject.sudokuworldsaga.domain.SudokuSolverTest) (189 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 0.30
+
+</body>
+</html>
