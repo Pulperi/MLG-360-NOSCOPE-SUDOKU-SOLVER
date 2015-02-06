@@ -1,4 +1,7 @@
-## SudokuWorldSaga (work name) 
+﻿## SudokuWorldSaga (work name) 
+
+
+![luokkakaavio](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/luokkakaavio_v2.png)
 
 Projektin tarkoitus on lähteä työstämään sudokupeliä/-ohjelmaa. Projektin lopputulos tulee olemaan "kaikenkattava" sudokuohjelma, jolla pystyy ratkaisemaan sudokuita, generoimaan uusia sudokulautoja ja pelaamaan sudokuita (i.e. ratkaisemaan niitä käsin). 
 

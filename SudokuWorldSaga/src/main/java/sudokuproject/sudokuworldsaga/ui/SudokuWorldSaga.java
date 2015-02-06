@@ -7,6 +7,7 @@ package sudokuproject.sudokuworldsaga.ui;
 import java.io.File;
 import javax.swing.JFileChooser;
 import sudokuproject.sudokuworldsaga.domain.Sudoku;
+import sudokuproject.sudokuworldsaga.domain.SudokuGenerator;
 import sudokuproject.sudokuworldsaga.domain.SudokuSolver;
 import sudokuproject.sudokuworldsaga.fileio.FileManager;
 
@@ -47,6 +48,7 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
         loadSudokuButton = new javax.swing.JButton();
         solveButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        newUnsolvedSudokuButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sudoku Game");
@@ -57,6 +59,7 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
         sudokuBoardBorder.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 0), 5));
         sudokuBoardBorder.setPreferredSize(new java.awt.Dimension(350, 350));
 
+        sudokuArea.setEditable(false);
         sudokuArea.setColumns(20);
         sudokuArea.setRows(5);
         jScrollPane1.setViewportView(sudokuArea);
@@ -81,7 +84,7 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
         newSudokuButton.setBackground(new java.awt.Color(0, 0, 0));
         newSudokuButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         newSudokuButton.setForeground(new java.awt.Color(255, 255, 255));
-        newSudokuButton.setText("New Sudoku");
+        newSudokuButton.setText("New Empty");
         newSudokuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newSudokuButtonActionPerformed(evt);
@@ -112,6 +115,17 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(350, 127));
         jPanel1.setLayout(new java.awt.GridLayout(5, 3));
 
+        newUnsolvedSudokuButton.setBackground(new java.awt.Color(0, 0, 0));
+        newUnsolvedSudokuButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        newUnsolvedSudokuButton.setForeground(new java.awt.Color(255, 255, 255));
+        newUnsolvedSudokuButton.setText("New Unsolved");
+        newUnsolvedSudokuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newUnsolvedSudokuButtonActionPerformed(evt);
+                newUnsolvedSudokuButtonActionPerformed1(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,9 +137,10 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
                     .addComponent(sudokuBoardBorder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(newUnsolvedSudokuButton)
                     .addComponent(newSudokuButton)
-                    .addComponent(loadSudokuButton)
-                    .addComponent(solveButton))
+                    .addComponent(solveButton)
+                    .addComponent(loadSudokuButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -137,11 +152,13 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(newSudokuButton)
+                        .addComponent(solveButton)
                         .addGap(20, 20, 20)
                         .addComponent(loadSudokuButton)
                         .addGap(20, 20, 20)
-                        .addComponent(solveButton))
+                        .addComponent(newUnsolvedSudokuButton)
+                        .addGap(20, 20, 20)
+                        .addComponent(newSudokuButton))
                     .addComponent(sudokuBoardBorder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,10 +202,23 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_loadSudokuButtonActionPerformed
 
+    private void newUnsolvedSudokuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newUnsolvedSudokuButtonActionPerformed
+        // TODO add your handling code here:
+        sudoku = SudokuGenerator.genNewSudoku(3, 3, 50);
+        sudokuArea.setText(sudoku.toString());
+        solveButton.setEnabled(true);
+    }//GEN-LAST:event_newUnsolvedSudokuButtonActionPerformed
+
+    private void newUnsolvedSudokuButtonActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newUnsolvedSudokuButtonActionPerformed1
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newUnsolvedSudokuButtonActionPerformed1
+
     /**
-     * @param args the command line arguments
+     * Launches the GUI
      */
-    public static void main(String args[]) {
+    
+    
+    public static void launch() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -225,6 +255,7 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton loadSudokuButton;
     private javax.swing.JButton newSudokuButton;
+    private javax.swing.JButton newUnsolvedSudokuButton;
     private javax.swing.JButton solveButton;
     private javax.swing.JTextArea sudokuArea;
     private javax.swing.JPanel sudokuBoardBorder;

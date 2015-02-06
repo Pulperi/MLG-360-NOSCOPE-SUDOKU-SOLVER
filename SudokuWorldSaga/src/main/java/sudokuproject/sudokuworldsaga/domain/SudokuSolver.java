@@ -1,18 +1,25 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package sudokuproject.sudokuworldsaga.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
-/**
- *
+/** SudokuSolver class
+ * <p>
+ * Produces solved sudokus from unfinished ones
+ * 
  * @author Henri
  */
 public class SudokuSolver {
     
+    /**
+     * Generates a solution for a sudoku.
+     * If multiple solutions found
+     * - one is picked randomly.
+     * 
+     * @param sudoku Unsolved sudoku
+     * @return Solved Sudoku
+     */
     public static Sudoku solve(Sudoku sudoku) throws IllegalArgumentException {
         // Sudoku is null, abort mission
         if (sudoku == null) {
@@ -34,10 +41,18 @@ public class SudokuSolver {
         }
     }
     
-    // *** MIGHT HAVE TO BE PUBLIC IN FUTURE (?) ***
+    /**
+     * Generates up to x (currently 1000) solutions for a given sudoku
+     * <p>
+     * NOTE: curently generated answers for sudokus are systematically very 
+     * similiar to each other. Only problematic when using solver to solve 
+     * sudokus with large amount of possible solutions.
+     * 
+     * @param sudoku Unsolved sudoku
+     * @return ArrayList of solved sudokus
+     */
     
-    
-    private static ArrayList<Sudoku> solveAll(Sudoku sudoku) {
+    public static ArrayList<Sudoku> solveAll(Sudoku sudoku) {
         ArrayList<Sudoku> solvedSudokus = nextTry(sudoku);
         if (solvedSudokus == null) {
             return null;
@@ -66,6 +81,7 @@ public class SudokuSolver {
                 if (!results.isEmpty()) {
                     for (Sudoku j : results) {
                         solvedSudokus.add(j);
+                        // Quit if over 1000 solutions found
                         if (solvedSudokus.size() >= 1000) {
                             return solvedSudokus;
                         }
@@ -89,6 +105,6 @@ public class SudokuSolver {
         }
         return null;
     }
-    
+
     
 }

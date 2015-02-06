@@ -36,16 +36,32 @@ public class FileManagerTest {
 
     @Test
     public void testInvalidSudokuFileLoadSudokuFromFile() {
-        // SUDOKU FILE HAS TOO MANY NUMBERS ON ROW 6
-        Sudoku sudoku = FileManager.loadSudokuFromFile("testFiles/testInvalidSudokuFile.sudoku");
-        assertTrue("Should return null when loading invalid file", sudoku == null);
-        
-        // SUDOKU FILE HAS INVALID NUMBER ON ROWS 2 and 8
-        sudoku = FileManager.loadSudokuFromFile("testFiles/testInvalidSudokuFile2.sudoku");
-        assertTrue("Should return null when loading invalid file", sudoku == null);
-        
-        sudoku = FileManager.loadSudokuFromFile("testFiles/emptyFile.sudoku");
-        assertTrue("Should return null when loading empty file", sudoku == null);
+        try {
+            // SUDOKU FILE HAS TOO MANY NUMBERS ON ROW 6
+            Sudoku sudoku = FileManager.loadSudokuFromFile("testFiles/testInvalidSudokuFile.sudoku");
+            assertTrue("Should return null when loading invalid file", sudoku == null);
+
+            // SUDOKU FILE HAS INVALID NUMBER ON ROWS 2 and 8
+            sudoku = FileManager.loadSudokuFromFile("testFiles/testInvalidSudokuFile2.sudoku");
+            assertTrue("Should return null when loading invalid file", sudoku == null);
+            
+            // SUDOKU FILE HAS TOO MANY NUMBERS ON FIRST ROW
+            sudoku = FileManager.loadSudokuFromFile("testFiles/testInvalidSudokuFile3.sudoku");
+            assertTrue("Should return null when loading invalid file", sudoku == null);
+            
+            // SUDOKU FILE HAS INVALID NUMBER ON FIRST ROW
+            sudoku = FileManager.loadSudokuFromFile("testFiles/testInvalidSudokuFile4.sudoku");
+            assertTrue("Should return null when loading invalid file", sudoku == null);
+            
+            // SUDOKU DIMENSIONS WRONG
+            sudoku = FileManager.loadSudokuFromFile("testFiles/testInvalidSudokuFile5.sudoku");
+            assertTrue("Should return null when loading invalid file", sudoku == null);
+
+            sudoku = FileManager.loadSudokuFromFile("testFiles/emptyFile.sudoku");
+            assertTrue("Should return null when loading empty file", sudoku == null);
+        } catch (Exception ex) {
+            assertFalse("FileManager should handle all the exceptions during loading from file.", true);
+        }
     }
     
     //LOAD AND SAVE TEST

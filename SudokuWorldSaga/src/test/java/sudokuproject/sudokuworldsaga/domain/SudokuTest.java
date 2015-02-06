@@ -4,6 +4,7 @@
  */
 package sudokuproject.sudokuworldsaga.domain;
 
+import java.util.Arrays;
 import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -71,10 +72,12 @@ public class SudokuTest {
         
         String[] resultParsed = result.split("\n");
         
-        assertTrue("Wrong number of rows", rows * (cols + 1) - 1 == resultParsed.length);
+        assertTrue("Wrong number of rows", rows * (cols + 1) == resultParsed.length);
         
         for (String s : resultParsed) {
-            assertTrue(((rows + 1) * cols - 1) + " Wrong length row: " + s, (rows + 1) * cols - 1 == s.length());
+            if (!s.contains("Unsolved")) {
+                assertTrue(((rows + 1) * cols - 1) + " Wrong length row: " + s, (rows + 1) * cols - 1 == s.length());
+            }
         }
     }
     
@@ -89,7 +92,7 @@ public class SudokuTest {
 
     private void testToStringEmpty(int rows, int cols) {
         String[] result = (new Sudoku(rows,cols)).toString().split("\n");
-        for (String s : result) {
+        for (String s : Arrays.copyOfRange(result, 0, result.length-1)) {
             String checkString = s.replace("|", "");
             checkString = checkString.replace("-", "");
             checkString = checkString.replaceAll("0", "");
@@ -112,7 +115,7 @@ public class SudokuTest {
         Sudoku sudoku = genSudoku(rows,cols);
         String[] results = sudoku.toString().split("\n");
         int counter = 1;
-        for (String str : results) {
+        for (String str : Arrays.copyOfRange(results, 0, results.length-1)) {
             if (!str.contains("-")) {
                 String row = str.replace("|", "").replace(counter + "", "");
                 assertTrue("Sudoku contains something other than it's supposed to: " + row, row.isEmpty());

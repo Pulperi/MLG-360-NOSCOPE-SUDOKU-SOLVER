@@ -12,37 +12,28 @@ import java.util.Arrays;
 import java.util.Scanner;
 import sudokuproject.sudokuworldsaga.domain.Sudoku;
 
-/**
+/** FileManager class handles all the reading from files and writing to files.
  *
  * @author Henri
  */
 public class FileManager {
+
+    /**
+     * Takes sudoku fileName as String and returns fully loaded sudoku.
+     * 
+     * @param filename as String
+     * @return null if file can't be found or if not valid sudoku file
+     */
+    public static Sudoku loadSudokuFromFile(String filename) {
+        return loadSudokuFromFile(new File(filename));
+    }  
     
-    public static Sudoku loadSudokuFromFile(String fileName) {
-        int[][] sudokuDataArray;
-        Sudoku sudoku;
-        
-        try (Scanner reader = new Scanner(new File(fileName))) {
-            sudokuDataArray = readLoadedFile(reader);
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex.getMessage());
-            return null;
-        }
-        
-        if (sudokuDataArray != null) {
-            int[][] copy = new int[sudokuDataArray.length-1][];
-            for (int i = 0; i < copy.length; i++) {
-                copy[i] = Arrays.copyOf(sudokuDataArray[i+1], sudokuDataArray[i+1].length);
-            }
-            sudoku = new Sudoku(sudokuDataArray[0][0],
-                                sudokuDataArray[0][1], 
-                                copy);
-            return sudoku;
-        }
-        
-        return null;
-    }
-    
+    /**
+     * Load method for GUI
+     * 
+     * @param file File
+     * @return null if file can't be found or if not valid sudoku file
+     */
     public static Sudoku loadSudokuFromFile(File file) {
         int[][] sudokuDataArray;
         Sudoku sudoku;
@@ -50,7 +41,7 @@ public class FileManager {
         try (Scanner reader = new Scanner(file)) {
             sudokuDataArray = readLoadedFile(reader);
         } catch (FileNotFoundException ex) {
-            System.out.println(ex.getMessage());
+
             return null;
         }
         
@@ -68,7 +59,12 @@ public class FileManager {
         return null;
     }
     
-    
+    /** File saving method used to save all the data in a sudoku object data to a file.
+     * 
+     * @param fileName String fileName
+     * @param sudoku Sudoku that is to be saved to file
+     * @throws FileNotFoundException if save failed
+     */
 
     public static void saveSudokuToFile(String fileName, Sudoku sudoku) throws FileNotFoundException {
         try (PrintWriter writer = new PrintWriter(fileName)) {
@@ -77,7 +73,7 @@ public class FileManager {
 
             writer.println(rows + "," + cols);
             
-            int[][] sudokuData = sudoku.getData();
+            int[][] sudokuData = sudoku.getSudokuData();
             
             for (int[] subSet : sudokuData) {
                 StringBuilder str = new StringBuilder("");
@@ -176,5 +172,31 @@ public class FileManager {
         }
         return true;
     }
-    
+        
+    /*
+    public static Sudoku loadSudokuFromFile(String fileName) {
+        int[][] sudokuDataArray;
+        Sudoku sudoku;
+        
+        try (Scanner reader = new Scanner(new File(fileName))) {
+            sudokuDataArray = readLoadedFile(reader);
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+        
+        if (sudokuDataArray != null) {
+            int[][] copy = new int[sudokuDataArray.length-1][];
+            for (int i = 0; i < copy.length; i++) {
+                copy[i] = Arrays.copyOf(sudokuDataArray[i+1], sudokuDataArray[i+1].length);
+            }
+            sudoku = new Sudoku(sudokuDataArray[0][0],
+                                sudokuDataArray[0][1], 
+                                copy);
+            return sudoku;
+        }
+        
+        return null;
+    }
+    */
 }

@@ -16,3 +16,12 @@
   * K√§ytt√∂liittym√§n kehitys aloitettu 
     * Tyhj√§n / valmiin (tiedostosta) sudokun lataus onnistuu
     * Ladatun sudokun ratkaiseminen toimii
+
+* 05/02/2015 // (~10 tuntia)
+  * Osa Sudoku -luokan toiminnallisuudesta siirretty SudokuData luokkaan
+  * SudokuData -luokka luotu
+  * SudokuGenerator luokka luotu
+  * SudokuGenerointi lis‰tty graafiseen k‰yttˆliittym‰‰n
+  * P‰ivitetty testausta ajan tasalle
+  * P‰ivitetty dokumentointia
+  * (n+1) muuta muutosta

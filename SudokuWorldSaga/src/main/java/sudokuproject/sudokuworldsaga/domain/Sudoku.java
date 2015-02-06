@@ -1,34 +1,43 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package sudokuproject.sudokuworldsaga.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Objects;
 
 /**
- *
+ * Main Sudoku class 
+ * <p>
+ * This class acts as a interface between Sudoku related operations 
+ * and SudokuData class.
+ * 
+ * @see SudokuData
+ * @see SudokuGenerator
+ * @see SudokuSolver
+ * 
  * @author Henri
  */
 public class Sudoku {
 
-    private int[][] sudoku;
+    private SudokuData sudoku;
+    
+    /*
+     * cols, rows indicate sudoku subset size
+     * 
+     */
+    
     private int rows, cols;
+
     
-    // Possible cell values
-    // VALUESET[5] = 5
-    // VALUESET[12] = c
-    // ...
+    // CONSTRUCTORS
     
-    private static String[] VALUESET = {"0", 
-                                        "1", "2", "3", "4", "5", 
-                                        "6", "7", "8", "9", "a", 
-                                        "b", "c", "d", "e", "e", 
-                                        "f", "g", "h", "i", "j", 
-                                        "k", "l", "m", "n", "o", 
-                                        "p", "q", "r", "s", "t", 
-                                        "u", "v", "x", "y", "z"}; 
+    /**
+     * Make new sudoku based on values listed on parameter sudokuDataArray
+     * 
+     * @param cols Sudoku columns (>1)
+     * @param rows Sudoku rows (>1)
+     * @param sudokuDataArray Sudoku data
+     *
+     * @throws IllegalArgumentException When invalid sudoku dimensions or sudokuData given.
+    */
     
     public Sudoku(int cols, int rows, int[][] sudokuDataArray) throws IllegalArgumentException {
         if (cols <= 1 || rows <= 1) {
@@ -39,10 +48,17 @@ public class Sudoku {
         }
         this.rows = rows;
         this.cols = cols;
-        sudoku = sudokuDataArray;
+        sudoku = new SudokuData(cols, rows, sudokuDataArray);
     }
 
-    // Make new empty sudoku with all cell values set to zero
+    /**
+     * Make new empty sudoku with all cell values set to zero
+     * 
+     * @param cols Sudoku columns (>1)
+     * @param rows Sudoku rows (>1)
+     * 
+     * @throws IllegalArgumentException When invalid sudoku dimensions given.
+    */
     
     public Sudoku(int cols, int rows) throws IllegalArgumentException  {
         if (cols <= 1 || rows <= 1) {
@@ -50,90 +66,54 @@ public class Sudoku {
         }
         this.rows = rows;
         this.cols = cols;
-        this.sudoku = new int[cols*rows][];
-        for (int i = 0; i < rows*cols; i++) {
-            int[] newSubset = new int[rows*cols];
-            Arrays.fill(newSubset, 0);
-            this.sudoku[i] = newSubset;
-        }
+        this.sudoku = new SudokuData(cols, rows);
     }
     
+    /**
+     * Make a copy of another sudoku
+    */
     public Sudoku(Sudoku sudoku) throws IllegalArgumentException  {
         if (sudoku == null) {
             throw new IllegalArgumentException("Source sudoku is null");
         }
         this.cols = sudoku.cols;
         this.rows = sudoku.rows;
-        this.sudoku = new int[cols*rows][];
-        for (int i = 0; i < rows*cols; i++) {
-            int[] newSubset = new int[rows*cols];
-            System.arraycopy(sudoku.sudoku[i], 0, newSubset, 0, rows*cols);
-            this.sudoku[i] = newSubset;
-        }
-    }
-    
-    public int getRows() {
-        return rows;
-    }
-    public int getCols() {
-        return cols;
-    }
-    
-    public int getXY(int x, int y) throws IllegalArgumentException {
-        if (!isInRange(x,y)) {
-            throw new IllegalArgumentException("x and/or y not in range");
-        }
-        return sudoku[findSubsetIndex(x,y)][findCellIndex(x,y)];
-    }
-    
-    private int findSubsetIndex(int x, int y) {
-        int rowFactor = ((y+1)-y%rows)/rows;
-        int columnFactor = ((x+1)-x%cols)/cols;
-        return columnFactor + rows*rowFactor;
-    }
-    
-    private int findCellIndex(int x, int y) {
-        int row = y%rows;
-        int col = x%cols;
-        return col+cols*row;
+        this.sudoku = new SudokuData(cols, rows, sudoku.getSudokuData());
     }
     
     public boolean isSolved() {
-        for (int[] i : sudoku) {
-            for (int j : i) {
-                if (j == 0) {
-                    return false;
-                }
-            }
-        }
-        return true;
+        return countUnsolved() == 0;
     }
     
-    @Override
-    public String toString() {
-        String sudokuString = "";
-        for (int i = 0; i < rows*cols; i++) {
-            if (i%rows == 0 && i != 0) {
-                sudokuString+= lineRow();
-            }
-            for (int j = 0; j < rows*cols; j++) {
-                if (j%cols == 0 && j != 0) {
-                    sudokuString+="|";
-                }
-                if (getXY(j,i) == 10) {
-                    sudokuString+=" ";
-                }
-                else {
-                    sudokuString+=getXY(j,i);
+    public int countUnsolved() {
+        int n = 0;
+        int sudokuSize = cols * rows;
+        for (int i = 0; i < sudokuSize; i++) {
+            for (int j = 0; j < sudokuSize; j++) {
+                if (sudoku.getXY(i, j) == 0) {
+                    n++;
                 }
             }
-            sudokuString+="\n";
         }
-        return sudokuString;
+        return n;
+    }
+    
+    public void shuffleSudoku() {
+        sudoku.doTheShuffle();
+    }
+    // SETTERS
+    
+    public void set(int x, int y, int value) {
+        sudoku.set(x, y, value);
     }
 
+    // GETTERS
+  
     
-    // Returns a ArrayList of possible entries in a given cell x,y
+    /**
+     * Returns a ArrayList of possible entries in a given cell x,y
+     */
+    
     public ArrayList<Integer> getEntries(int x, int y) throws IllegalArgumentException{
         if (!isInRange(x,y)) {
             throw new IllegalArgumentException("x and/or y not in range");
@@ -148,7 +128,7 @@ public class Sudoku {
         for (int i = 1; i < 10; i++) {
             validEntries.add(i);
         }
-        for (int i : sudoku[findSubsetIndex(x,y)]) {
+        for (int i : sudoku.getNumbersInSubset(x, y)) {
             if (!falseEntries.contains(i) && i != 0) {
                 falseEntries.add(i);
             }
@@ -168,12 +148,55 @@ public class Sudoku {
         validEntries.removeAll(falseEntries);
         return validEntries;
     }
+    
+    /* 
+     * Public methods to access sudoku size and cell data
+     */
+    
+    public int getRows() {
+        return rows;
+    }
+    public int getCols() {
+        return cols;
+    }     
+    public int getSize() {
+        return rows*cols;
+    }   
+    public int getXY(int x, int y) throws IllegalArgumentException {
+        if (!isInRange(x,y)) {
+            throw new IllegalArgumentException("x and/or y not in range");
+        }
+        return sudoku.getXY(x, y);
+    }
+    public int[][] getSudokuData() {
+        return sudoku.getData();
+    }
 
+    
+    // ****************
+    
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Arrays.deepHashCode(this.sudoku);
-        return hash;
+    public String toString() {
+        String sudokuString = "";
+        for (int i = 0; i < rows*cols; i++) {
+            if (i%rows == 0 && i != 0) {
+                sudokuString+= lineRow();
+            }
+            for (int j = 0; j < rows*cols; j++) {
+                if (j%cols == 0 && j != 0) {
+                    sudokuString+="|";
+                }
+                if (getXY(j,i) == 10) {
+                    sudokuString+=" ";
+                }
+                else {
+                    sudokuString+=sudoku.getSymbolXY(j,i);
+                }
+            }
+            sudokuString+="\n";
+        }
+        sudokuString+="Unsolved: " + countUnsolved() + "\n";
+        return sudokuString;
     }
 
     @Override
@@ -183,26 +206,30 @@ public class Sudoku {
         }
         if (getClass() != obj.getClass()) {
             return false;
-        }
+        }        
         final Sudoku other = (Sudoku) obj;
-        if (!Arrays.deepEquals(this.sudoku, other.sudoku)) {
+        if (!this.sudoku.equals(other.sudoku)) {
             return false;
         }
         return true;
     }
-    
-    
 
-    public void set(int x, int y, int value) {
-        sudoku[findSubsetIndex(x,y)][findCellIndex(x,y)] = value;
-    }
 
+    
+    // PRIVATE HELPER METHODS
+    
+    /*
+     * Returns true/false if (x,y) in sudoku range 
+     */
     private boolean isInRange(int x, int y) {
-        return ((x >= 0 || x < this.cols) 
-                && (y >= 0 || y < this.rows))  
+        return ((x >= 0 || x < this.cols * this.rows) 
+                && (y >= 0 || y < this.cols * this.rows))  
                 ? (true) : (false);
     }
     
+    /*
+     * Prints a row of '-' for toString() method
+     */
     private String lineRow() {
         StringBuilder string = new StringBuilder("");
         String c = "-";
@@ -211,13 +238,5 @@ public class Sudoku {
         }
         string.append("\n");
         return string.toString();
-    }
-
-    public int[][] getData() {
-        int[][] copy = new int[sudoku.length][];
-        for (int i = 0; i < sudoku.length; i++) {
-            copy[i] = Arrays.copyOf(sudoku[i], sudoku[i].length);
-        }
-        return copy;
     }
 }
