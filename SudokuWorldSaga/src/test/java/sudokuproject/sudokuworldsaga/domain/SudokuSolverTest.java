@@ -27,6 +27,11 @@ public class SudokuSolverTest {
         assertFalse("Null test failed.", nullTestFail);
     }
     
+    @Test
+    public void constructorTest() {
+        assertTrue("Juuh Okei Tehää Nyt Tälläenenki Sit", new SudokuSolver() != null);
+    }
+    
 
     @Test
     public void testSolveBasic() {
@@ -57,7 +62,12 @@ public class SudokuSolverTest {
             Sudoku solved = SudokuSolver.solve(sudoku);
             System.out.println(solved);
             assertTrue("Solving test failed.", solved.isSolved());
+            assertTrue("Should return same sudoku when solver called on already solved sudoku.", solved.equals(SudokuSolver.solve(solved)));
             assertTrue("Solver not giving correct answer.", solved.equals(sudokuControl));
+            
+            sudoku.set(0,0, 3);
+            assertTrue("Should return empty if invalid sudoku.", SudokuSolver.solveAll(sudoku).isEmpty());
+            assertTrue("Should return null if invalid sudoku.", SudokuSolver.solve(sudoku) == null);
         } catch (Exception ex) {
             assertFalse("Solving test failed: " + ex.getMessage() , true);
         }

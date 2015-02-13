@@ -206,7 +206,7 @@
         <Property name="text" type="java.lang.String" value="New Unsolved"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newUnsolvedSudokuButtonActionPerformed,newUnsolvedSudokuButtonActionPerformed1"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newUnsolvedSudokuButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

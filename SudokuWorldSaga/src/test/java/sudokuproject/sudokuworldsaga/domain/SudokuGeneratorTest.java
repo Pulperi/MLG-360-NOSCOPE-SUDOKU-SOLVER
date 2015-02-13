@@ -5,8 +5,8 @@
 package sudokuproject.sudokuworldsaga.domain;
 
 import java.util.ArrayList;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *
@@ -15,6 +15,11 @@ import static org.junit.Assert.*;
 public class SudokuGeneratorTest {
     
     public SudokuGeneratorTest() {
+    }
+    
+    @Test
+    public void constructorTest() {
+        assertTrue("Juuh Okei Tehää Nyt Tälläenenki Sit", new SudokuGenerator() != null);
     }
 
     @Test

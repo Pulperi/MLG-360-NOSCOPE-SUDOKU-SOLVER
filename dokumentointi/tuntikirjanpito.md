@@ -25,3 +25,19 @@
   * Päivitetty testausta ajan tasalle
   * Päivitetty dokumentointia
   * (n+1) muuta muutosta
+
+* 08/02/2015 // (~30 min)
+  * Luovaa ajattelutyötä (algoritmien optimointia)
+
+* 10/02/2015 // (~1 tunti)
+  * Luovaa ajattelutyötä (algoritmien optimointia)
+
+* 12/02/2015 // (~10 tuntia)
+  * SudokuGenerator overhaul
+  * SudokuSolver overhaul
+  * SudokuData lisätty validitycheck
+  * Ohjelman algoritmien vuokaavioita piirretty/päivitetty
+  * Ohjelman testejä kehitetty/parannettu/lisätty
+  * Mutantteja murhattu
+  * Koodia peitetty
+  * etc...

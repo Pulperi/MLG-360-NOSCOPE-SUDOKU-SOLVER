@@ -23,22 +23,21 @@ public class SudokuShuffler {
      */
     
     public static void doTheShuffle(int rows, int cols, int[][] sudoku) {
-        if (sudoku == null || rows < 2 || cols < 2 || rows*cols != sudoku.length) {
+        if (sudoku == null || rows < 2 || cols < 2 || rows * cols != sudoku.length) {
             return;
         }
         Random random = new Random();
         doSubsetRowShuffle(rows, cols, sudoku, random, 1);
         doSubsetColShuffle(rows, cols, sudoku, random, 1);
     }
-        private static void doSubsetRowShuffle(int rows, int cols, int[][] sudoku, Random random, int n) {
+    private static void doSubsetRowShuffle(int rows, int cols, int[][] sudoku, Random random, int n) {
         for (int i = 0; i < n; i++) {
-            int row1 = random.nextInt(rows) * rows ; // {0, 3, 6}
-            int row2 = (row1 + cols) % (rows*cols);  // {3, 6, 0}
+            int row1 = random.nextInt(rows) * rows; // {0, 3, 6}
+            int row2 = (row1 + cols) % (rows * cols);  // {3, 6, 0}
             
             for (int j = 0; j < cols; j++) {
-                swapSubsets(j+row1, j+row2, sudoku);
+                swapSubsets(j + row1, j + row2, sudoku);
             }
-            
         }
     }
     private static void doSubsetColShuffle(int rows, int cols, int[][] sudoku, Random random, int n) {
@@ -47,7 +46,7 @@ public class SudokuShuffler {
             int col2 = (col1 + 1) % rows;    // { 1, 2, 0}
             
             for (int j = 0; j < rows; j++) {
-                swapSubsets(col1 + (j*3), col2 + (j*3) , sudoku);
+                swapSubsets(col1 + (j * 3), col2 + (j * 3) , sudoku);
             }
             
         }

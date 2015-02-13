@@ -6,8 +6,10 @@ package sudokuproject.sudokuworldsaga.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
-    /**
+    
+/**
     * > generates random solved sudoku<br>
     * > sets n cells as zeros<br>
     * > generates all the possible solutions for sudoku<br>
@@ -22,48 +24,72 @@ import java.util.Collections;
 public class SudokuGenerator {
 
     public static Sudoku genNewSudoku(int cols, int rows, int n) {
-        // GEN RANDOM FILLED SUDOKU AND THEN SET N CELLS TO ZERO
+        // GEN "RANDOM" FILLED SUDOKU AND THEN SET N CELLS TO ZERO
         if (n < 0) {
             throw new IllegalArgumentException("n < 0");
         }
-        Sudoku sudoku = setNtoZero(SudokuSolver.solve(new Sudoku(cols,rows)), n);
+        
+        Sudoku sudoku = SudokuSolver.solve(new Sudoku(cols, rows));
+        
+        // Switch rows and cols around to make the sudoku more random
         sudoku.shuffleSudoku();
-                
-        Sudoku xDoku = genDatSudoku(sudoku);
+        
+        // SET N CELLS TO ZERO
+        sudoku = setNtoZero(sudoku, n);        
+        
+        // Run the main generation algorithm
+        ArrayList<Sudoku> solutions = SudokuSolver.solveAll(sudoku);
+        Sudoku xDoku = genDatSudoku(sudoku, solutions);
+        
+        /* Dev notes...
+        * Shuffle again ?
+        * Does shuffling affect the number of solutions?
+        *
+        *  xDoku.shuffleSudoku();
+        */
+        
         return xDoku;
     }
     
-    private static Sudoku genDatSudoku(Sudoku sudoku) {
-        ArrayList<Sudoku> solutions = SudokuSolver.solveAll(sudoku);
-        
+    private static Sudoku genDatSudoku(Sudoku sudoku, ArrayList<Sudoku> solutions) {
         if (solutions.size() == 1) {
             return sudoku;
         }
         
+        // Create a list that will contain solutions that are still valid after input
+        ArrayList<Sudoku> validSolutions = new ArrayList<Sudoku>();
+        
         Sudoku uniqueSolutions = countUniques(sudoku.getCols(), sudoku.getRows(), solutions);
         
+        // Generate the solution difference histogram
         Coords xy = getMostUnique(uniqueSolutions);
-        ArrayList<Integer> uniqueValues = getUniques(solutions, xy);        
-        Collections.shuffle(uniqueValues);
+        
+        // Get the cell (x,y) where the solutions differ the most
+        ArrayList<Integer> uniqueValues = getUniques(solutions, xy);
+        // Pick random number from possible solutions that will be inserted
+        int number = uniqueValues.get((new Random()).nextInt(uniqueValues.size()));
+  
+        // copies the solutions that are still valid to validSolutions
+        getValidSolutions(number, xy, solutions, validSolutions);
+        
         
         Sudoku newSudoku = new Sudoku(sudoku);
+        newSudoku.set(xy.x, xy.y, number);
         
-        newSudoku.set(xy.x, xy.y, uniqueValues.get(0));
-        
-        return genDatSudoku(newSudoku);
+        return genDatSudoku(newSudoku, validSolutions);
     }
     
     
-    /* DOES NOT RETURN REAL SUDOKU 
+    /* DOES NOT RETURN REAL SUDOKU BUT A HISTOGRAM WHERE
     * EACH CELL COINTAINS THE VALUE HOW MUCH THE SOLUTIONS DIFFER
     */
     private static Sudoku countUniques(int cols, int rows, ArrayList<Sudoku> solutions) {
-        Sudoku sudoku = new Sudoku(cols,rows);
+        Sudoku sudoku = new Sudoku(cols, rows);
         ArrayList<Coords> solvedList = genLocs(sudoku);
         
         for (int i = 0; i < sudoku.getSize(); i++) {
             for (int j = 0; j < sudoku.getSize(); j++) {
-                Coords xy = new Coords(i,j);
+                Coords xy = new Coords(i, j);
                 if (!solvedList.contains(xy)) {
                     ArrayList<Integer> valueList = getUniques(solutions, xy);
                     sudoku.set(xy.x, xy.y, valueList.size());
@@ -118,7 +144,7 @@ public class SudokuGenerator {
         for (int i = 0; i < sudoku.getSize(); i++) {
             for (int j = 0; j < sudoku.getSize(); j++) {
                 if (sudoku.getXY(i, j) != 0) {
-                    list.add(new Coords(i,j));
+                    list.add(new Coords(i, j));
                 }
             }
         }
@@ -159,40 +185,44 @@ public class SudokuGenerator {
             }
         }
     }*/
-}
 
-class Coords {
-        int x;
-        int y;
-        
-        public Coords(int x, int y) {
-            this.x = x;
-            this.y = y;
+    private static void getValidSolutions(int number, Coords xy, ArrayList<Sudoku> solutions, ArrayList<Sudoku> validSolutions) {
+        for (Sudoku i : solutions) {
+            if (i.getXY(xy.x, xy.y) == number) {
+                validSolutions.add(i);
+            }
         }
+    }
+    
+}
+class Coords {
+    int x, y;
+        
+    public Coords(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
     @Override
-        public String toString() {
-            return "(" + x + ", " + y +")";
+    public String toString() {
+        return "(" + x + ", " + y + ")";
+    }
+        
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj == null) {
-                return false;
-            }
-            if (getClass() != obj.getClass()) {
-                return false;
-            }
-            final Coords other = (Coords) obj;
-            if (this.x != other.x) {
-                return false;
-            }
-            if (this.y != other.y) {
-                return false;
-            }
-            return true;
+        if (getClass() != obj.getClass()) {
+            return false;
         }
-        
-        
+        final Coords other = (Coords) obj;
+        if (this.x != other.x) {
+            return false;
+        }
+        if (this.y != other.y) {
+            return false;
+        }
+        return true;
+    } 
 }

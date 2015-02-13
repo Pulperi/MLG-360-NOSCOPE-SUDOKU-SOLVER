@@ -5,8 +5,8 @@
 package sudokuproject.sudokuworldsaga.domain;
 
 import java.util.Arrays;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *
@@ -17,6 +17,11 @@ public class SudokuShufflerTest {
     public SudokuShufflerTest() {
     }
 
+    @Test
+    public void constructorTest() {
+        assertTrue("Juuh Okei Tehää Nyt Tälläenenki Sit", new SudokuShuffler() != null);
+    }
+    
     @Test
     public void nullTest() {
         int[][] sudoku = null;
@@ -58,6 +63,15 @@ public class SudokuShufflerTest {
         System.out.println(new Sudoku(3,3, sudoku2));
         
         assertFalse("Tables should be different after shuffle.\n" + sudoku1.toString() + "\n" + sudoku2.toString(), superDeepEquals(sudoku1, sudoku2));
+    }
+    
+    @Test
+    public void validityTest() {
+        int[][] b = SudokuGenerator.genNewSudoku(3, 3, 0).getSudokuData();
+        SudokuShuffler.doTheShuffle(3,3, b);
+        
+        Sudoku sudoku = new Sudoku(3,3, b);
+        assertTrue("Shuffled sudoku should still be street legal", sudoku.isValid());
     }
     
     private int[][] matrixCopy(int[][] source) {

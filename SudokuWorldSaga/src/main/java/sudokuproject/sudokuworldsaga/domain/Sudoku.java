@@ -1,6 +1,7 @@
 package sudokuproject.sudokuworldsaga.domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 /**
@@ -60,7 +61,7 @@ public class Sudoku {
      * @throws IllegalArgumentException When invalid sudoku dimensions given.
     */
     
-    public Sudoku(int cols, int rows) throws IllegalArgumentException  {
+    public Sudoku(int cols, int rows) throws IllegalArgumentException {
         if (cols <= 1 || rows <= 1) {
             throw (new IllegalArgumentException("Too small"));
         }
@@ -72,7 +73,7 @@ public class Sudoku {
     /**
      * Make a copy of another sudoku
     */
-    public Sudoku(Sudoku sudoku) throws IllegalArgumentException  {
+    public Sudoku(Sudoku sudoku) throws IllegalArgumentException {
         if (sudoku == null) {
             throw new IllegalArgumentException("Source sudoku is null");
         }
@@ -114,8 +115,8 @@ public class Sudoku {
      * Returns a ArrayList of possible entries in a given cell x,y
      */
     
-    public ArrayList<Integer> getEntries(int x, int y) throws IllegalArgumentException{
-        if (!isInRange(x,y)) {
+    public ArrayList<Integer> getEntries(int x, int y) throws IllegalArgumentException {
+        if (!isInRange(x, y)) {
             throw new IllegalArgumentException("x and/or y not in range");
         }
         ArrayList<Integer> validEntries = new ArrayList<Integer>();
@@ -134,40 +135,51 @@ public class Sudoku {
             }
         }
         // find all the numbers already on the row
-        for (int i = 0; i < rows*cols; i++) {
-            if (!falseEntries.contains(getXY(i,y)) && getXY(i,y) != 0) {
-                falseEntries.add(getXY(i,y));
+        for (int i = 0; i < rows * cols; i++) {
+            if (!falseEntries.contains(getXY(i, y)) && getXY(i, y) != 0) {
+                falseEntries.add(getXY(i, y));
             }
         }
         // find all the numbers already on the column
-        for (int i = 0; i < rows*cols; i++) {
-            if (!falseEntries.contains(getXY(x,i)) && getXY(x,i) != 0) {
-                falseEntries.add(getXY(x,i));
+        for (int i = 0; i < rows * cols; i++) {
+            if (!falseEntries.contains(getXY(x, i)) && getXY(x, i) != 0) {
+                falseEntries.add(getXY(x, i));
             }
         }
         validEntries.removeAll(falseEntries);
         return validEntries;
     }
-    
-    /* 
-     * Public methods to access sudoku size and cell data
+
+    /** Checks if the sudoku data is valid
+     * 
+     * @see SudokuData
+     * 
+     * @return true if valid sudoku
      */
+    
+    public boolean isValid() {
+        return sudoku.validityTest();
+    }
     
     public int getRows() {
         return rows;
     }
+    
     public int getCols() {
         return cols;
-    }     
+    }
+    
     public int getSize() {
-        return rows*cols;
-    }   
+        return rows * cols;
+    }
+    
     public int getXY(int x, int y) throws IllegalArgumentException {
-        if (!isInRange(x,y)) {
+        if (!isInRange(x, y)) {
             throw new IllegalArgumentException("x and/or y not in range");
         }
         return sudoku.getXY(x, y);
     }
+    
     public int[][] getSudokuData() {
         return sudoku.getData();
     }
@@ -177,28 +189,24 @@ public class Sudoku {
     
     @Override
     public String toString() {
-        String sudokuString = "";
-        for (int i = 0; i < rows*cols; i++) {
-            if (i%rows == 0 && i != 0) {
-                sudokuString+= lineRow();
+        StringBuilder sudokuString = new StringBuilder("");
+        String column = "|";
+        for (int i = 0; i < rows * cols; i++) {
+            if (i % rows == 0 && i != 0) {
+                sudokuString.append(lineRow());
             }
-            for (int j = 0; j < rows*cols; j++) {
-                if (j%cols == 0 && j != 0) {
-                    sudokuString+="|";
+            for (int j = 0; j < rows * cols; j++) {
+                if (j % cols == 0 && j != 0) {
+                    sudokuString.append(column);
                 }
-                if (getXY(j,i) == 10) {
-                    sudokuString+=" ";
-                }
-                else {
-                    sudokuString+=sudoku.getSymbolXY(j,i);
-                }
+                sudokuString.append(sudoku.getSymbolXY(j, i));
             }
-            sudokuString+="\n";
+            sudokuString.append("\n");
         }
-        sudokuString+="Unsolved: " + countUnsolved() + "\n";
-        return sudokuString;
-    }
-
+        sudokuString.append("Unsolved: " + countUnsolved() + "\n");
+        return sudokuString.toString();
+    }    
+    
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -214,22 +222,21 @@ public class Sudoku {
         return true;
     }
 
-
-    
     // PRIVATE HELPER METHODS
     
-    /*
+    /**
      * Returns true/false if (x,y) in sudoku range 
      */
+
     private boolean isInRange(int x, int y) {
-        return ((x >= 0 || x < this.cols * this.rows) 
-                && (y >= 0 || y < this.cols * this.rows))  
-                ? (true) : (false);
+        int size = this.getSize();
+        return (((y < 0 || y > size) || (x < 0 || x > size)) ? false : true);
     }
     
-    /*
+    /**
      * Prints a row of '-' for toString() method
      */
+    
     private String lineRow() {
         StringBuilder string = new StringBuilder("");
         String c = "-";

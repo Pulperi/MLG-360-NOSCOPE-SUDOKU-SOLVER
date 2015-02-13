@@ -40,15 +40,15 @@ public class FileManager {
         
         try (Scanner reader = new Scanner(file)) {
             sudokuDataArray = readLoadedFile(reader);
-        } catch (FileNotFoundException ex) {
-
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
             return null;
         }
         
         if (sudokuDataArray != null) {
-            int[][] copy = new int[sudokuDataArray.length-1][];
+            int[][] copy = new int[sudokuDataArray.length - 1][];
             for (int i = 0; i < copy.length; i++) {
-                copy[i] = Arrays.copyOf(sudokuDataArray[i+1], sudokuDataArray[i+1].length);
+                copy[i] = Arrays.copyOf(sudokuDataArray[i + 1], sudokuDataArray[i + 1].length);
             }
             sudoku = new Sudoku(sudokuDataArray[0][0],
                                 sudokuDataArray[0][1], 
@@ -87,39 +87,31 @@ public class FileManager {
     }
     
     private static int[][] readLoadedFile(Scanner reader) {
-        ArrayList<int[]> readFiles = new ArrayList<>();
+        ArrayList<int[]> sudokuData = new ArrayList<>();
         
         // FIRST LINE SHOULD CONTAIN SUDOKU SIZE
 
         int size;
         
-        if (reader.hasNext()) {
-            String str[] = reader.nextLine().split(",");
-            if (str.length == 2) {
-                int rows, cols;
-                try {
-                    rows = Integer.parseInt(str[0]);
-                    cols = Integer.parseInt(str[1]);
-                } catch (NumberFormatException ex) {
-                    System.out.println(ex.getMessage());
-                    return null;
-                }
-                if (rows > 1 && cols > 1) {
-                    size = rows*cols;
-                    int[] rc = {rows, cols};
-                    readFiles.add(rc);
-                }
-                else {
-                    return null;
-                }
-            }
-            else {
-                // dimensions wrong
+        String str[] = reader.nextLine().split(",");
+        if (str.length == 2) {
+            int rows, cols;
+            try {
+                rows = Integer.parseInt(str[0]);
+                cols = Integer.parseInt(str[1]);
+            } catch (NumberFormatException ex) {
+                System.out.println(ex.getMessage());
                 return null;
             }
-        }
-        else {
-            // empty file
+            if (rows > 1 && cols > 1) {
+                size = rows * cols;
+                int[] rc = {rows, cols};
+                sudokuData.add(rc);
+            } else {
+                return null;
+            }
+        } else {
+            // dimensions wrong
             return null;
         }
         
@@ -143,16 +135,16 @@ public class FileManager {
                 return null;
             }
             
-            readFiles.add(newValues);
+            sudokuData.add(newValues);
         }
         
-        if (readFiles.size() != size + 1) {
+        if (sudokuData.size() != size + 1) {
             return null;
         }
         
-        int[][] array = new int[readFiles.size()][];
+        int[][] array = new int[sudokuData.size()][];
         
-        return readFiles.toArray(array);
+        return sudokuData.toArray(array);
     }
 
     private static int[] convertToInt(String[] newLine) {
@@ -165,12 +157,15 @@ public class FileManager {
     }
 
     private static boolean checkValues(int[] newValues, int size) {
+        boolean valuesValid = true;
         for (int i : newValues) {
-            if (i < 0 || i > size) {
-                return false;
+            if (i < 0) {
+                valuesValid = false;
+            } else if (i > size) {
+                valuesValid = false;
             }
         }
-        return true;
+        return valuesValid;
     }
         
     /*
