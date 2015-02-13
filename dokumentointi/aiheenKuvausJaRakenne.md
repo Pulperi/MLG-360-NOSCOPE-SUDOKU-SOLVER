@@ -1,40 +1,33 @@
-Ôªø## SudokuWorldSaga (work name) 
+## SudokuWorldSaga (work name) 
 
+![logo](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/art.png)
 
-![luokkakaavio](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/luokkakaavio_v2.png)
+Projektin tarkoitus on l‰hte‰ tyˆst‰m‰‰n sudokupeli‰/-ohjelmaa. Projektin lopputulos tulee olemaan "kaikenkattava" sudokuohjelma, jolla pystyy ratkaisemaan sudokuita, generoimaan uusia sudokulautoja ja pelaamaan sudokuita (i.e. ratkaisemaan niit‰ k‰sin). 
 
-Projektin tarkoitus on l√§hte√§ ty√∂st√§m√§√§n sudokupeli√§/-ohjelmaa. Projektin lopputulos tulee olemaan "kaikenkattava" sudokuohjelma, jolla pystyy ratkaisemaan sudokuita, generoimaan uusia sudokulautoja ja pelaamaan sudokuita (i.e. ratkaisemaan niit√§ k√§sin). 
+#### T‰h‰n menness‰ toteutetut toiminnot
 
-Alla napkin drafti√§ ohjelman toiminnallisuudesta ja rakenteesta... 
+* Graafinen k‰yttˆliittym‰, jolla voi ladata ruudulle sudokuita ja ratkaista niit‰
+**K‰ytt‰j‰n toiminnot:**
+* Lataa tyhj‰ sudoku
+* Lataa uusi generoitu sudoku
+* Sudokun lataaminen tiedostosta (done)
+* Ladatun sudokun ratkaiseminen automaattisesti ratkaisijalla
 
-![KayttoliittymaDraft](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/kayttoliittyma-draft.png)
+#### Tyˆn alla
+* Sudokun syˆtt‰minen manuaalisesti graafisen k‰yttˆliittym‰n kautta 
+* Sudokun parempi visualisointi graafisessa k‰yttˆliittym‰ss‰
+* Sudokun tilan tallennus tiedostoon (toiminnallisuus olemassa)
+* Mahdollisuus vaikuttaa generoitujen sudokujen vaikeusasteeseen (toiminnalisuus olemassa)
+* Sudokupelin "pelaus" (generoitujen sudokujen t‰yttˆ manualisesti)
 
-![PerustoiminnallisuuskaavioDraft](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/perustoiminnalisuuskaavio-draft.png)
+![GraphicalUserInterFace_alpha](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/GraphicalUserInterFace_alpha.png)
+
+![GameStateLoop](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/GameStateLoop.png)
+
+![SudokuGeneratorStateChart](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/SudokuGeneratorStateChart.png)
+
+![SudokuSolvingAlgorithm](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/SudokuSolvingAlgorithm.png)
+
+![luokkakaavio_v2.png](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/luokkakaavio_v2.png.png)
 
 ![SudokuTaulukkoRakenneDraft](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/sudokutaulukkorakenne.png)
-
-Toimintojen lis√§√§minen tapahtuu vaiheittain ja alussa tarkoitus on luoda perustoiminto eli sudokuiden sy√∂tt√§minen ohjelmaan, joko k√§sin tai tiedostosta. Peruslogiikan valmistuttua voidaan luoda sen p√§√§lle graafinen k√§ytt√∂liittym√§.
-Vaiheissa edet√§√§n kurssiin k√§ytett√§viss√§ olevan ajan puitteissa.
-
-#### Ensimm√§inen vaihe 
-
-* Toteutetaan sudokuratkaisija, jolla voi ratkaista siihen sy√∂tettyj√§ sudokuita.
-
-**K√§ytt√§j√§n toiminnot:**
-* Sudokun sy√∂tt√§minen manuaalisesti graafisen k√§ytt√∂liittym√§n kautta
-* Sudokun lataaminen tiedostosta
-* Sy√∂tetyn sudokun ratkaiseminen
-* ...
-
-#### Toinen vaihe
-
-* Lis√§t√§√§n mahdollisuus luoda uusia sudokuita, joilla uniikki ratkaisu.
-
-**K√§ytt√§j√§n lis√§toiminnot:**
-* Sudokujen generointi (mahdollisuus vaikuttaa generoitujen sudokuiden vaikeuteen)
-* Generoitujen sudokuiden tallennus tiedostoon
-
-#### Kolmas vaihe
-
-* Mahdollisuus pelata ladattuja/generoituja sudokuita
-
