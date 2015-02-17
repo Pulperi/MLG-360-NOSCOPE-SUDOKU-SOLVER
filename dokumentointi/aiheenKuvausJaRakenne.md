@@ -1,8 +1,8 @@
-## SudokuWorldSaga (work name) 
+## SudokuWorldSaga (work name)
 
 ![logo](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/art.png)
 
-Projektin tarkoitus on lähteä työstämään sudokupeliä/-ohjelmaa. Projektin lopputulos tulee olemaan "kaikenkattava" sudokuohjelma, jolla pystyy ratkaisemaan sudokuita, generoimaan uusia sudokulautoja ja pelaamaan sudokuita (i.e. ratkaisemaan niitä käsin). 
+Projektin tarkoitus on lähteä työstämään sudokupeliä/-ohjelmaa. Projektin lopputulos tulee olemaan "kaikenkattava" sudokuohjelma, jolla pystyy ratkaisemaan sudokuita, generoimaan uusia sudokulautoja ja pelaamaan sudokuita (i.e. ratkaisemaan niitä käsin).
 
 #### Tähän mennessä toteutetut toiminnot
 
@@ -14,7 +14,7 @@ Projektin tarkoitus on lähteä työstämään sudokupeliä/-ohjelmaa. Projektin lopput
 * Ladatun sudokun ratkaiseminen automaattisesti ratkaisijalla
 
 #### Työn alla
-* Sudokun syöttäminen manuaalisesti graafisen käyttöliittymän kautta 
+* Sudokun syöttäminen manuaalisesti graafisen käyttöliittymän kautta
 * Sudokun parempi visualisointi graafisessa käyttöliittymässä
 * Sudokun tilan tallennus tiedostoon (toiminnallisuus olemassa)
 * Mahdollisuus vaikuttaa generoitujen sudokujen vaikeusasteeseen (toiminnalisuus olemassa)
@@ -22,12 +22,12 @@ Projektin tarkoitus on lähteä työstämään sudokupeliä/-ohjelmaa. Projektin lopput
 
 ![GraphicalUserInterFace_alpha](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/GraphicalUserInterFace_alpha.png)
 
-![GameStateLoop](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/GameStateLoop.png)
+![GameStateLoop](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/diagrams/GameStateLoop.png)
 
-![SudokuGeneratorStateChart](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/SudokuGeneratorStateChart.png)
+![SudokuGeneratorStateChart](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/diagrams/SudokuGeneratorStateChart.png)
 
-![SudokuSolvingAlgorithm](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/SudokuSolvingAlgorithm.png)
+![SudokuSolvingAlgorithm](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/diagrams/SudokuSolvingAlgorithm.png)
 
-![luokkakaavio_v2.png](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/luokkakaavio_v2.png.png)
+![luokkakaavio_v2.png](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/diagrams/luokkakaavio_v2.png.png)
 
 ![SudokuTaulukkoRakenneDraft](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/sudokutaulukkorakenne.png)
