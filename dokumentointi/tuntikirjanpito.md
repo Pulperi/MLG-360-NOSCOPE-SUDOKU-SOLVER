@@ -13,7 +13,7 @@
 
 * 30/01/2015 // (~5 tuntia)
   * FileManager luokka ja sen testereitä
-  * Käyttöliittymän kehitys aloitettu 
+  * Käyttöliittymän kehitys aloitettu
     * Tyhjän / valmiin (tiedostosta) sudokun lataus onnistuu
     * Ladatun sudokun ratkaiseminen toimii
 
@@ -41,3 +41,14 @@
   * Mutantteja murhattu
   * Koodia peitetty
   * etc...
+
+* 17/02/2015 // (~2 tuntia)
+  * Diagrammien piirtelyä etc
+
+* 20/02/2015 // (~)
+  * Diagrammien piirtelyä
+  * CheckStyleä
+  * Testien päivittelyä
+  * SudokuShuffleria päivitetty, sotkee nyt myös rivejä
+  * SudokuGeneratorin bugeja korjattu
+  * misc.
