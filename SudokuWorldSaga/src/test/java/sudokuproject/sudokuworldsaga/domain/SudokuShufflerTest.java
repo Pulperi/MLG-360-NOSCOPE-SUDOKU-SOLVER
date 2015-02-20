@@ -19,7 +19,7 @@ public class SudokuShufflerTest {
 
     @Test
     public void constructorTest() {
-        assertTrue("Juuh Okei Tehää Nyt Tälläenenki Sit", new SudokuShuffler() != null);
+        assertTrue("Test that doesn't test anything failed. GJ", new SudokuShuffler() != null);
     }
     
     @Test
@@ -31,22 +31,27 @@ public class SudokuShufflerTest {
             assertFalse("Exception thrown", true);
         }
         assertTrue("Null sudoku should be null, even after shuffled.", sudoku == null);
-        
+    }
+    
+    @Test
+    public void parameterTest() {
         int[][] sudoku1 = new int[3][3];
         for (int i = 0; i < sudoku1.length; i++) {
             for (int j = 0; j < sudoku1[i].length; j++) {
                 sudoku1[i][j] = i;
             }
         }
-        
         int[][] sudoku2 = matrixCopy(sudoku1);
         SudokuShuffler.doTheShuffle(1, 2, sudoku1);
         SudokuShuffler.doTheShuffle(2, 1, sudoku1);
         SudokuShuffler.doTheShuffle(3, 4, sudoku1);
         assertTrue("Wrong rows/cols parameters, sudoku should be untouched", superDeepEquals(sudoku1, sudoku2));
-          
     }
     
+    /*
+     * Runs the shuffle algorithm on a generated int[9][9] matrix
+     * The results should not be same (might randomly be)
+     */
     @Test
     public void testFullShuffle() {
         int[][] sudoku1 = new int[9][9];
@@ -55,25 +60,25 @@ public class SudokuShufflerTest {
                 sudoku1[i][j] = i;
             }
         }
+        // Test that matrixCopy actually works :D
         int[][] sudoku2 = matrixCopy(sudoku1);
         assertTrue("No shuffling done should return true.", superDeepEquals(sudoku1, sudoku2));
         SudokuShuffler.doTheShuffle(3, 3, sudoku1);
-        
-        System.out.println(new Sudoku(3,3, sudoku1));
-        System.out.println(new Sudoku(3,3, sudoku2));
-        
         assertFalse("Tables should be different after shuffle.\n" + sudoku1.toString() + "\n" + sudoku2.toString(), superDeepEquals(sudoku1, sudoku2));
     }
     
+    /*
+     * Tests shuffling on a Sudoku and runs validity check
+     */
     @Test
     public void validityTest() {
         int[][] b = SudokuGenerator.genNewSudoku(3, 3, 0).getSudokuData();
-        SudokuShuffler.doTheShuffle(3,3, b);
-        
-        Sudoku sudoku = new Sudoku(3,3, b);
+        SudokuShuffler.doTheShuffle(3, 3, b);
+        Sudoku sudoku = new Sudoku(3, 3, b);
         assertTrue("Shuffled sudoku should still be street legal", sudoku.isValid());
     }
     
+    // Returns copy of 2d matrix
     private int[][] matrixCopy(int[][] source) {
         int[][] copy = new int[source.length][];
         int i = 0;
@@ -84,6 +89,7 @@ public class SudokuShufflerTest {
         return copy;
     }
     
+    // Check if two 2d matrixes are equal
     private boolean superDeepEquals(int[][] m1, int[][] m2) {
         if (m1 == null && m2 == null) {
             return true;

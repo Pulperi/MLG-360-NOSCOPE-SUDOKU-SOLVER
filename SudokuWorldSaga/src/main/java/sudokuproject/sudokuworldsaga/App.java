@@ -1,8 +1,5 @@
 package sudokuproject.sudokuworldsaga;
 
-import sudokuproject.sudokuworldsaga.domain.Sudoku;
-import sudokuproject.sudokuworldsaga.domain.SudokuGenerator;
-import sudokuproject.sudokuworldsaga.domain.SudokuSolver;
 import sudokuproject.sudokuworldsaga.ui.SudokuWorldSaga;
 
 /**
@@ -11,8 +8,8 @@ import sudokuproject.sudokuworldsaga.ui.SudokuWorldSaga;
  */
 public class App {
     public static void main(String[] args) {
-        SudokuWorldSaga swg = new SudokuWorldSaga();
-        swg.launch();
+        //SudokuWorldSaga swg = new SudokuWorldSaga();
+        SudokuWorldSaga.launch();        
     }
 }   
     

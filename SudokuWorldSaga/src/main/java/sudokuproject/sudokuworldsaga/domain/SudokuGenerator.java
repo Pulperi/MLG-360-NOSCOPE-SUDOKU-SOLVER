@@ -6,6 +6,7 @@ package sudokuproject.sudokuworldsaga.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Random;
 
     
@@ -23,19 +24,19 @@ import java.util.Random;
 
 public class SudokuGenerator {
 
-    public static Sudoku genNewSudoku(int cols, int rows, int n) {
+    public static Sudoku genNewSudoku(int cols, int rows, int nEmpty) {
         // GEN "RANDOM" FILLED SUDOKU AND THEN SET N CELLS TO ZERO
-        if (n < 0) {
+        if (nEmpty < 0) {
             throw new IllegalArgumentException("n < 0");
         }
-        
+         
         Sudoku sudoku = SudokuSolver.solve(new Sudoku(cols, rows));
         
         // Switch rows and cols around to make the sudoku more random
         sudoku.shuffleSudoku();
         
         // SET N CELLS TO ZERO
-        sudoku = setNtoZero(sudoku, n);        
+        sudoku = setNtoZero(sudoku, nEmpty);        
         
         // Run the main generation algorithm
         ArrayList<Sudoku> solutions = SudokuSolver.solveAll(sudoku);
@@ -59,45 +60,58 @@ public class SudokuGenerator {
         // Create a list that will contain solutions that are still valid after input
         ArrayList<Sudoku> validSolutions = new ArrayList<Sudoku>();
         
-        Sudoku uniqueSolutions = countUniques(sudoku.getCols(), sudoku.getRows(), solutions);
-        
-        // Generate the solution difference histogram
-        Coords xy = getMostUnique(uniqueSolutions);
-        
         // Get the cell (x,y) where the solutions differ the most
-        ArrayList<Integer> uniqueValues = getUniques(solutions, xy);
+        // and the solutions
+        
+        HashMap<Coords, ArrayList<Integer>> mostUnique = getCellWithMostSolutions(sudoku.getSize(), solutions);
+        ArrayList<Integer> uniqueValues = null;
+        Coords xy = null;
+        
+        for (Coords i : mostUnique.keySet()) {
+            uniqueValues = mostUnique.get(i);
+            xy = i;
+        }
+        
         // Pick random number from possible solutions that will be inserted
         int number = uniqueValues.get((new Random()).nextInt(uniqueValues.size()));
   
         // copies the solutions that are still valid to validSolutions
         getValidSolutions(number, xy, solutions, validSolutions);
         
+        sudoku.set(xy.x, xy.y, number);
         
-        Sudoku newSudoku = new Sudoku(sudoku);
-        newSudoku.set(xy.x, xy.y, number);
-        
-        return genDatSudoku(newSudoku, validSolutions);
+        return genDatSudoku(sudoku, validSolutions);
     }
     
+    /*
+     * Returns the coordinates of the cell where most solutions differ and 
+     * all the possible solutions for the given cell
+     */
     
-    /* DOES NOT RETURN REAL SUDOKU BUT A HISTOGRAM WHERE
-    * EACH CELL COINTAINS THE VALUE HOW MUCH THE SOLUTIONS DIFFER
-    */
-    private static Sudoku countUniques(int cols, int rows, ArrayList<Sudoku> solutions) {
-        Sudoku sudoku = new Sudoku(cols, rows);
-        ArrayList<Coords> solvedList = genLocs(sudoku);
+    private static HashMap<Coords, ArrayList<Integer>> getCellWithMostSolutions(int size, ArrayList<Sudoku> solutions) {
+        HashMap<Coords, ArrayList<Integer>> result = new HashMap<Coords, ArrayList<Integer>>();
         
-        for (int i = 0; i < sudoku.getSize(); i++) {
-            for (int j = 0; j < sudoku.getSize(); j++) {
+        Coords maxCell = null;
+        ArrayList<Integer> maxUniques = null;
+        
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 Coords xy = new Coords(i, j);
-                if (!solvedList.contains(xy)) {
-                    ArrayList<Integer> valueList = getUniques(solutions, xy);
-                    sudoku.set(xy.x, xy.y, valueList.size());
+                if (maxCell == null) {
+                    maxCell = xy;
+                    maxUniques = getUniques(solutions, xy);
+                } else {
+                    ArrayList<Integer> xyUniques = getUniques(solutions, xy);
+                    if (xyUniques.size() > maxUniques.size()) {
+                        maxUniques = xyUniques;
+                        maxCell = xy;
+                    }
                 }
             }
-        }
-        return sudoku;
-    } 
+        }        
+        result.put(maxCell, maxUniques);
+        return result;
+    }
     
     /*
      * Returns list of unique solutions for a given cell
@@ -113,22 +127,7 @@ public class SudokuGenerator {
         }
         return valueList;
     }
-    
-    /*
-     * Returns the coordinates of the cell where most solutions differ
-     */
-    
-    private static Coords getMostUnique(Sudoku uniqueList) {
-        Coords target = new Coords(0, 0);
-        for (int i = 0; i < uniqueList.getSize(); i++) {
-            for (int j = 0; j < uniqueList.getSize(); j++) {
-                if (uniqueList.getXY(i, j) > uniqueList.getXY(target.x, target.y)) {
-                    target = new Coords(i, j);
-                }
-            }
-        }
-        return target;
-    }
+   
     
     private static Sudoku setNtoZero(Sudoku sudoku, int n) {
         ArrayList<Coords> coords = genLocs(sudoku);
@@ -150,41 +149,6 @@ public class SudokuGenerator {
         }
         return list;
     }
-    /* 
-    private static boolean hasMoreThanOneAnswer(Sudoku sudoku) {
-        return SudokuSolver.solveAll(sudoku).size() > 1;
-    }
-    
-    // INEFFICIENT WAY TO CREATE SUDOKUS
-    
-    public static Sudoku genSudokuWithAtleastNUnsolved(int cols, int rows, int n) {
-        Sudoku sudoku = SudokuSolver.solve(new Sudoku(cols,rows));
-        while (true) {
-            Sudoku newSudoku = removeEntry(sudoku);
-            if (newSudoku.countUnsolved() > n) {
-                return newSudoku;
-            }
-        }
-    }    
-    
-    private static Sudoku removeEntry(Sudoku sudoku) {
-        Sudoku newSudoku = new Sudoku(sudoku);
-        if (hasMoreThanOneAnswer(sudoku)) {
-            return null;
-        }
-        else {
-            ArrayList<Coords> locs = genLocs(newSudoku);
-            Collections.shuffle(locs);
-            newSudoku.set(locs.get(0).x, locs.get(0).y, 0);
-            newSudoku = removeEntry(newSudoku);
-            if (newSudoku == null) {
-                return sudoku;
-            }
-            else {
-                return newSudoku;
-            }
-        }
-    }*/
 
     private static void getValidSolutions(int number, Coords xy, ArrayList<Sudoku> solutions, ArrayList<Sudoku> validSolutions) {
         for (Sudoku i : solutions) {

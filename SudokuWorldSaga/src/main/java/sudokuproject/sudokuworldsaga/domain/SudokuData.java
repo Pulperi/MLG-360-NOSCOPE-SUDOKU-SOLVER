@@ -16,7 +16,7 @@ import java.util.HashMap;
  * @author Henri
  */
 public class SudokuData {
-    private int[][] sudoku;
+    private int[][] sudokuDataArray;
     private final int rows, cols;
     
     /** 
@@ -45,11 +45,15 @@ public class SudokuData {
     public SudokuData(int cols, int rows) {
         this.rows = rows;
         this.cols = cols;
-        this.sudoku = new int[cols * rows][];
+        this.sudokuDataArray = new int[cols * rows][];
+        fillZeros();
+    }
+    
+    private void fillZeros() {
         for (int i = 0; i < rows * cols; i++) {
             int[] newSubset = new int[rows * cols];
             Arrays.fill(newSubset, 0);
-            this.sudoku[i] = newSubset;
+            this.sudokuDataArray[i] = newSubset;
         }
     }
     
@@ -65,7 +69,7 @@ public class SudokuData {
     public SudokuData(int cols, int rows, int[][] array) {
         this.rows = rows;
         this.cols = cols;
-        this.sudoku = matrixCopy(array);
+        this.sudokuDataArray = matrixCopy(array);
     }
     
     /** Tests that the sudoku is valid sudoku.<p>
@@ -140,7 +144,7 @@ public class SudokuData {
      */
     
     private boolean validityTestSubsetsFail() {
-        int[][] sudokuData = sudoku;
+        int[][] sudokuData = sudokuDataArray;
         for (int[] subSet : sudokuData) {
             ArrayList<Integer> subSetValues = new ArrayList<Integer>();
             for (int i : subSet) {
@@ -157,16 +161,16 @@ public class SudokuData {
     }
     
     public int[][] getData() {
-        return matrixCopy(sudoku);
+        return matrixCopy(sudokuDataArray);
     }
     
     public int[] getNumbersInSubset(int x, int y) {
-        int[] subSet = Arrays.copyOf(sudoku[findSubsetIndex(x, y)], sudoku[findSubsetIndex(x, y)].length);
+        int[] subSet = Arrays.copyOf(sudokuDataArray[findSubsetIndex(x, y)], sudokuDataArray[findSubsetIndex(x, y)].length);
         return subSet;
     }
     
     public int getXY(int x, int y) {
-        return sudoku[findSubsetIndex(x, y)][findCellIndex(x, y)];
+        return sudokuDataArray[findSubsetIndex(x, y)][findCellIndex(x, y)];
     }
     
     public String getSymbolXY(int x, int y) {
@@ -174,7 +178,7 @@ public class SudokuData {
     }
     
     public void set(int x, int y, int value) {
-        sudoku[findSubsetIndex(x, y)][findCellIndex(x, y)] = value;
+        sudokuDataArray[findSubsetIndex(x, y)][findCellIndex(x, y)] = value;
     }
     
     private int findSubsetIndex(int x, int y) {
@@ -198,7 +202,7 @@ public class SudokuData {
     }
     
     public void doTheShuffle() {
-        SudokuShuffler.doTheShuffle(rows, cols, sudoku);
+        SudokuShuffler.doTheShuffle(rows, cols, sudokuDataArray);
     }
 
     @Override
@@ -210,7 +214,7 @@ public class SudokuData {
             return false;
         }
         final SudokuData other = (SudokuData) obj;
-        if (!Arrays.deepEquals(this.sudoku, other.sudoku)) {
+        if (!Arrays.deepEquals(this.sudokuDataArray, other.sudokuDataArray)) {
             
             return false;
         }

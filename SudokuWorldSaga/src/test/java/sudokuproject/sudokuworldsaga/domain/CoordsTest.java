@@ -17,21 +17,35 @@ public class CoordsTest {
     public CoordsTest() {
     }
 
+    /*
+     * Testing that the constructor works
+     */
     @Test
     public void testCoords() {
         Coords tCords = new Coords(5, 2);
         assertTrue("Coord values not set correctly", tCords.x == 5 && tCords.y == 2);
+    }
+    
+    /*
+     * Testing that toString method works
+     */
+    @Test
+    public void testCoordsToString() {
+        Coords tCords = new Coords(5, 2);
         assertTrue("ToString method not returning correct String", tCords.toString().equals("(5, 2)"));
     }
     
+    /*
+     * Testing equals method of Coords class
+     */
     @Test
     public void testCoordsComparing() {
-        Coords tCords1 = new Coords(7,5);
-        Coords tCords2 = new Coords(7,5);
-        Coords tCords3 = new Coords(4,5);
-        Coords tCords4 = new Coords(7,3);
-        Coords tCords5 = new Coords(1,1);
-        
+        Coords tCords1 = new Coords(7, 5);
+        Coords tCords2 = new Coords(7, 5);
+        Coords tCords3 = new Coords(4, 5);
+        Coords tCords4 = new Coords(7, 3);
+        Coords tCords5 = new Coords(1, 1);
+   
         assertTrue("Should return true", tCords1.equals(tCords1));
         assertTrue("Should return true", tCords1.equals(tCords2));
         assertFalse("Should return false", tCords1.equals(tCords3));
@@ -40,6 +54,7 @@ public class CoordsTest {
         assertFalse("Should return false", tCords1.equals("Testi"));
         assertFalse("Should return false", tCords1.equals(null));
         
+        // Testing that it actually works when used in lists
         ArrayList<Coords> list = new ArrayList<Coords>();
         Coords[] coords = {tCords1, tCords2, tCords3, tCords4, tCords5};
         for (Coords i : coords) {

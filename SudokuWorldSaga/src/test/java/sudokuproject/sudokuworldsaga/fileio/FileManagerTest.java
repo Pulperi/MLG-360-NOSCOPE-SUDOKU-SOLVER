@@ -23,7 +23,7 @@ public class FileManagerTest {
     
     @Test
     public void constructorTest() {
-        assertTrue("Juuh Okei Tehää Nyt Tälläenenki Sit", new FileManager() != null);
+        assertTrue("Test that doesn't test anything failed. GJ", new FileManager() != null);
     }
     
 
@@ -62,7 +62,7 @@ public class FileManagerTest {
     @Test
     public void testLoadingAndSaving() {
         // Create empty 3x3 sudoku
-        Sudoku sudoku = new Sudoku(3,3);
+        Sudoku sudoku = new Sudoku(3, 3);
         
         // Create tested numbers [1,9] that are inserted to sudoku
         
@@ -71,28 +71,16 @@ public class FileManagerTest {
         for (int i = 0; i < 10; i++) {
             randomNumbers[i] = random.nextInt(9) + 1;
         }
-        
-        System.out.println("Random numbers:");
-        for (int i : randomNumbers) {
-            System.out.print(i + ", ");
-        }
-        System.out.println("");
             
         // Create locations x,y: [0,9] where numbers are insterted
         ArrayList<Coordinates> locations = new ArrayList<>();
         
         while (locations.size() < 10) {
-            Coordinates xy = new Coordinates(random.nextInt(9),random.nextInt(9));
+            Coordinates xy = new Coordinates(random.nextInt(9), random.nextInt(9));
             if (!locations.contains(xy)) {
                 locations.add(xy);
             }
         }
-        
-        System.out.println("Locations:");
-        for (Coordinates i : locations) {
-            System.out.print(i.toString() + " <> ");
-        }
-        System.out.println("");
         
         // insert random numbers to sudoku
         // will not be solvable
@@ -109,13 +97,13 @@ public class FileManagerTest {
         }
         
         // clear old sudoku
-        String testString = sudoku.toString();
+        String controlString = sudoku.toString();
         sudoku = null;
         
         // load sudoku from file
         sudoku = FileManager.loadSudokuFromFile("testFiles/testFileNameTestTestTest");
         assertTrue("Failed to load from file. Returned null sudoku", sudoku != null);
-        assertTrue("File loaded incorrectly.", sudoku.toString().equals(testString));
+        assertTrue("File loaded incorrectly.", sudoku.toString().equals(controlString));
         
         
         

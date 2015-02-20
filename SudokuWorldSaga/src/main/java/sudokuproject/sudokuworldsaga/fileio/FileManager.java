@@ -41,7 +41,7 @@ public class FileManager {
         try (Scanner reader = new Scanner(file)) {
             sudokuDataArray = readLoadedFile(reader);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            //System.out.println(ex.getMessage());
             return null;
         }
         

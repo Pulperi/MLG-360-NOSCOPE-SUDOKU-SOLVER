@@ -6,10 +6,10 @@ package sudokuproject.sudokuworldsaga.ui;
 
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -38,7 +38,6 @@ public class SudokuWorldSagaTest {
 
     @Test
     public void testLaunch() {
-        System.out.println("launch");
         try {
             SudokuWorldSaga.launch();
         } catch (Exception ex) {
