@@ -45,7 +45,7 @@
 * 17/02/2015 // (~2 tuntia)
   * Diagrammien piirtelyä etc
 
-* 20/02/2015 // (~)
+* 20/02/2015 // (~10 tuntia)
   * Diagrammien piirtelyä
   * CheckStyleä
   * Testien päivittelyä
