@@ -5,7 +5,11 @@
 package sudokuproject.sudokuworldsaga.ui;
 
 import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import sudokuproject.sudokuworldsaga.domain.Sudoku;
 import sudokuproject.sudokuworldsaga.domain.SudokuGenerator;
 import sudokuproject.sudokuworldsaga.domain.SudokuSolver;
@@ -27,6 +31,13 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
      */
     public SudokuWorldSaga() {
         initComponents();
+        setFileChooserFilter();
+    }
+    
+    private void setFileChooserFilter() {
+        FileFilter filter = new FileNameExtensionFilter("Sudoku file", "sudoku");
+        jFileChooser.addChoosableFileFilter(filter);
+        jFileChooser.setFileFilter(filter);
     }
 
     /**
@@ -47,12 +58,14 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         newUnsolvedSudokuButton = new javax.swing.JButton();
         difficultySlider = new javax.swing.JSlider();
-        jLabel1 = new javax.swing.JLabel();
+        difficultyLabel = new javax.swing.JLabel();
         difficultyValueText = new javax.swing.JTextField();
+        title = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sudoku Game");
-        setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(new java.awt.Color(153, 153, 153));
         setResizable(false);
 
         sudokuBoardBorder.setBackground(new java.awt.Color(255, 255, 255));
@@ -113,8 +126,9 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel1.setText("Sudoku difficulty [0, 60]");
+        difficultyLabel.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        difficultyLabel.setLabelFor(difficultySlider);
+        difficultyLabel.setText("Sudoku difficulty [0, 60]");
 
         difficultyValueText.setText("0");
         difficultyValueText.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -123,33 +137,44 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
             }
         });
 
+        title.setFont(new java.awt.Font("Rod", 1, 18)); // NOI18N
+        title.setText("<html><center><font color='red'><b>Sudoku World Saga</b></font></center></html>");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kissa.jpeg"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(sudokuBoardBorder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(sudokuBoardBorder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(difficultyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(20, 20, 20)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(newSudokuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(loadSudokuButton)
+                                .addComponent(solveButton)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(difficultySlider, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(difficultyValueText, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(newUnsolvedSudokuButton))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(newUnsolvedSudokuButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(newSudokuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(loadSudokuButton)
-                            .addComponent(solveButton)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(difficultySlider, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(difficultyValueText, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jLabel1)
+                            .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(20, 20, 20))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {loadSudokuButton, newSudokuButton, solveButton});
@@ -157,9 +182,8 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sudokuBoardBorder, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(solveButton)
                         .addGap(18, 18, 18)
@@ -169,14 +193,18 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(newUnsolvedSudokuButton)
                         .addGap(11, 11, 11)
-                        .addComponent(jLabel1)
+                        .addComponent(difficultyLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(difficultySlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(difficultyValueText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(difficultyValueText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel1))
+                    .addComponent(sudokuBoardBorder, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -207,11 +235,7 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
                 sudoku = loadedSudoku;
                 sudokuPanel1.updateValues(sudoku);
                 solveButton.setEnabled(true);
-            } else {
-                // sudokuArea.setText("File load failed.\n");
             }
-        } else {
-            //  sudokuArea.setText("Open command canceled by user.\n");
         }
     }//GEN-LAST:event_loadSudokuButtonActionPerformed
 
@@ -285,6 +309,7 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel difficultyLabel;
     private javax.swing.JSlider difficultySlider;
     private javax.swing.JTextField difficultyValueText;
     private javax.swing.JFileChooser jFileChooser;
@@ -296,5 +321,6 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
     private javax.swing.JButton solveButton;
     private javax.swing.JPanel sudokuBoardBorder;
     private sudokuproject.sudokuworldsaga.ui.SudokuBoard.SudokuPanel sudokuPanel1;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
