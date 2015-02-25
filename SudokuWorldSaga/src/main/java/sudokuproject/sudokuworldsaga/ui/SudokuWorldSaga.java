@@ -6,7 +6,6 @@ package sudokuproject.sudokuworldsaga.ui;
 
 import java.awt.Color;
 import java.io.File;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
@@ -129,7 +128,6 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
         solveButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         solveButton.setForeground(new java.awt.Color(255, 255, 255));
         solveButton.setText("Solve Sudoku");
-        solveButton.setEnabled(false);
         solveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 solveButtonActionPerformed(evt);
@@ -169,6 +167,8 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
         title.setText("<html><center><font color='red'><b>Sudoku World Saga</b></font></center></html>");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kissa.jpeg"))); // NOI18N
+
+        jScrollPane2.setAutoscrolls(true);
 
         textField.setColumns(20);
         textField.setRows(5);
@@ -343,8 +343,7 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
         // Action when solve Sudoku button is clicked
         Sudoku solvedSudoku = SudokuSolver.solve(sudoku);
         if (solvedSudoku != null) {
-            sudoku = solvedSudoku;
-            sudokuPanel1.updateValues(sudoku);
+            sudokuPanel1.updateSolvedValues(sudoku, solvedSudoku);
             solveButton.setEnabled(false);
         }
         else {
@@ -382,7 +381,7 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
         sudoku = SudokuGenerator.genNewSudoku(3, 3, difficultyValue);
         sudokuPanel1.updateValues(sudoku);
         solveButton.setEnabled(true);
-        disableSudokuButtons();
+        disableSudokuButtons();        
     }//GEN-LAST:event_newUnsolvedSudokuButtonActionPerformed
 
     private void difficultySliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_difficultySliderStateChanged
@@ -439,10 +438,11 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
             String bText = bSource.getText();
             sudokuPanel1.setXY(activeX, activeY, bText);
             int val = 0;
+            sudokuPanel1.setXYColor(activeX, activeY, Color.WHITE);
             if (!bText.equals("")) {
                 val = Integer.parseInt(bText);
-            } 
-            sudokuPanel1.setXYColor(activeX, activeY, Color.YELLOW);
+                sudokuPanel1.setXYColor(activeX, activeY, Color.YELLOW);
+            }
             sudoku.set(activeX, activeY, val);
             textField.append("Changed cell x: " + activeX + ", y: " + activeY + " value to: " + sudoku.getXY(activeX, activeY) + "\n");
         }

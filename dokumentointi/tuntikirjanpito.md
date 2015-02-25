@@ -52,3 +52,8 @@
   * SudokuShuffleria päivitetty, sotkee nyt myös rivejä
   * SudokuGeneratorin bugeja korjattu
   * misc.
+
+* 25/02/2015 // (~8 tuntia)
+  * sudokulauta rakennettu
+  * difficulty slider
+  * pelimoodi

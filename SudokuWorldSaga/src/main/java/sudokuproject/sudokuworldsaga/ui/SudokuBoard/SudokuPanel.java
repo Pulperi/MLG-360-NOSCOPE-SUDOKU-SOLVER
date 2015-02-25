@@ -25,11 +25,23 @@ public class SudokuPanel extends javax.swing.JPanel {
     public void updateValues(Sudoku sudoku) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                setXY(i, j, sudoku.getXY(i,j) + "");
+                setXY(i, j, sudoku.getXY(i, j) + "");
                 setXYColor(i, j, Color.WHITE);
             }
         }
     }
+
+    public void updateSolvedValues(Sudoku sudoku, Sudoku solvedSudoku) {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (sudoku.getXY(i, j) == 0) {
+                    setXY(i, j, solvedSudoku.getXY(i, j) + "");
+                    setXYColor(i, j, Color.GREEN);
+                }
+            }
+        }
+    }
+    
     
     public void setXY(int x, int y, String value) {
         subsets[findSubsetIndex(x, y)].setValue(findCellIndex(x, y), value);
@@ -93,6 +105,5 @@ public class SudokuPanel extends javax.swing.JPanel {
     private sudokuproject.sudokuworldsaga.ui.SudokuBoard.SudokuPanelSubset subset8;
     private sudokuproject.sudokuworldsaga.ui.SudokuBoard.SudokuPanelSubset subset9;
     // End of variables declaration//GEN-END:variables
-
 
 }
