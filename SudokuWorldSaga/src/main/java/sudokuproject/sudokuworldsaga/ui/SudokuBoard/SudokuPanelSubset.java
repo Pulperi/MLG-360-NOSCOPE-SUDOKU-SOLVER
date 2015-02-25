@@ -4,6 +4,8 @@
  */
 package sudokuproject.sudokuworldsaga.ui.SudokuBoard;
 
+import java.awt.Color;
+
 /**
  *
  * @author Henri
@@ -23,6 +25,11 @@ public class SudokuPanelSubset extends javax.swing.JPanel {
     public void setValue(int i, String value) {
         cells[i].setValue(value);
     }
+    
+    public void setColor(int i, Color color) {
+        cells[i].setBackground(color);
+    }
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,4 +75,6 @@ public class SudokuPanelSubset extends javax.swing.JPanel {
     private sudokuproject.sudokuworldsaga.ui.SudokuBoard.SudokuCell cell8;
     private sudokuproject.sudokuworldsaga.ui.SudokuBoard.SudokuCell cell9;
     // End of variables declaration//GEN-END:variables
+
+
 }

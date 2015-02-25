@@ -4,6 +4,7 @@
  */
 package sudokuproject.sudokuworldsaga.ui.SudokuBoard;
 
+import java.awt.Color;
 import sudokuproject.sudokuworldsaga.domain.Sudoku;
 
 /**
@@ -25,12 +26,17 @@ public class SudokuPanel extends javax.swing.JPanel {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 setXY(i, j, sudoku.getXY(i,j) + "");
+                setXYColor(i, j, Color.WHITE);
             }
         }
     }
     
     public void setXY(int x, int y, String value) {
         subsets[findSubsetIndex(x, y)].setValue(findCellIndex(x, y), value);
+    }
+    
+    public void setXYColor(int x, int y, Color color) {
+        subsets[findSubsetIndex(x, y)].setColor(findCellIndex(x, y), color);
     }
     
     private int findSubsetIndex(int x, int y) {
