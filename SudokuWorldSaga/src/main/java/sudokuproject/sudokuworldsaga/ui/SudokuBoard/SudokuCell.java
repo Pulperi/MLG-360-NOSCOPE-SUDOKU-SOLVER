@@ -18,7 +18,11 @@ public class SudokuCell extends javax.swing.JPanel {
     }
     
     public void setValue(String newValue) {
-        cellValue.setText(newValue);
+        if (newValue.equals("0")) {
+            cellValue.setText("");
+        } else {
+            cellValue.setText(newValue);
+        }
     }
     
     /**
@@ -40,7 +44,6 @@ public class SudokuCell extends javax.swing.JPanel {
 
         cellValue.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         cellValue.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cellValue.setText("0");
         cellValue.setAlignmentX(0.5F);
         cellValue.setMaximumSize(new java.awt.Dimension(10, 10));
         cellValue.setMinimumSize(new java.awt.Dimension(10, 10));
