@@ -34,47 +34,47 @@
     <Property name="verticalGap" type="int" value="1"/>
   </Layout>
   <SubComponents>
-    <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell" name="cell1">
+    <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuCell" name="cell1">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="cell0"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell" name="cell2">
+    <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuCell" name="cell2">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="cell1"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell" name="cell3">
+    <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuCell" name="cell3">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="cell2"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell" name="cell4">
+    <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuCell" name="cell4">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="cell3"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell" name="cell5">
+    <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuCell" name="cell5">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="cell4"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell" name="cell6">
+    <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuCell" name="cell6">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="cell5"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell" name="cell7">
+    <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuCell" name="cell7">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="cell6"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell" name="cell8">
+    <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuCell" name="cell8">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="cell7"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell" name="cell9">
+    <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuCell" name="cell9">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="cell8"/>
       </AccessibilityProperties>

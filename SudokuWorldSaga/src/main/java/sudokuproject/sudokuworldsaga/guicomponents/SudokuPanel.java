@@ -1,4 +1,4 @@
-package sudokuproject.sudokuworldsaga.SudokuBoard;
+package sudokuproject.sudokuworldsaga.guicomponents;
 
 import java.awt.Color;
 import sudokuproject.sudokuworldsaga.domain.Sudoku;
@@ -71,9 +71,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         if (notInRange(y, 0, 8)) {
             return;
         }
-        if (value != null) {
-            subsets[findSubsetIndex(x, y)].setValue(findCellIndex(x, y), value);
-        }
+        subsets[findSubsetIndex(x, y)].setValue(findCellIndex(x, y), value);
     }
     
     /**
@@ -87,9 +85,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         if (notInRange(x, 0, 8) || notInRange(y, 0, 8)) {
             return;
         }
-        if (color != null) {
-            subsets[findSubsetIndex(x, y)].setColor(findCellIndex(x, y), color);
-        }
+        subsets[findSubsetIndex(x, y)].setColor(findCellIndex(x, y), color);
     }
     
     private int findSubsetIndex(int x, int y) {
@@ -120,15 +116,15 @@ public class SudokuPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        subset1 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset();
-        subset2 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset();
-        subset3 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset();
-        subset4 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset();
-        subset5 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset();
-        subset6 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset();
-        subset7 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset();
-        subset8 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset();
-        subset9 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset();
+        subset1 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset();
+        subset2 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset();
+        subset3 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset();
+        subset4 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset();
+        subset5 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset();
+        subset6 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset();
+        subset7 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset();
+        subset8 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset();
+        subset9 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.GridLayout(3, 3, 1, 1));
@@ -160,15 +156,15 @@ public class SudokuPanel extends javax.swing.JPanel {
         subset9.getAccessibleContext().setAccessibleName("subset8");
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset subset1;
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset subset2;
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset subset3;
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset subset4;
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset subset5;
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset subset6;
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset subset7;
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset subset8;
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset subset9;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset subset1;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset subset2;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset subset3;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset subset4;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset subset5;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset subset6;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset subset7;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset subset8;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset subset9;
     // End of variables declaration//GEN-END:variables
 
 }

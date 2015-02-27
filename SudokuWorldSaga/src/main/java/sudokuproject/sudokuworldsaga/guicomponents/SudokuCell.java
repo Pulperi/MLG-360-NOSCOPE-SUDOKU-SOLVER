@@ -1,4 +1,4 @@
-package sudokuproject.sudokuworldsaga.SudokuBoard;
+package sudokuproject.sudokuworldsaga.guicomponents;
 
 /**
  * The graphical representation of a single sudoku cell.

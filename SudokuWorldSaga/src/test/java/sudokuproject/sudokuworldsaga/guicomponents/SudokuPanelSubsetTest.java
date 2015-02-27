@@ -2,23 +2,21 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package sudokuproject.sudokuworldsaga.SudokuBoard;
+package sudokuproject.sudokuworldsaga.guicomponents;
 
-import sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell;
-import sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JLabel;
-import static org.junit.Assert.*;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author Henri
  */
 public class SudokuPanelSubsetTest {
-
-    private SudokuPanelSubset sPS;
+    
+private SudokuPanelSubset sPS;
     private SudokuPanelSubset sPS2;
 
     public SudokuPanelSubsetTest() {

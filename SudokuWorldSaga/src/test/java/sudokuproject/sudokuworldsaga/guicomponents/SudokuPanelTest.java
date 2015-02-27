@@ -2,11 +2,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package sudokuproject.sudokuworldsaga.SudokuBoard;
+package sudokuproject.sudokuworldsaga.guicomponents;
 
-import sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell;
-import sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanel;
-import sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JLabel;
@@ -66,28 +63,56 @@ public class SudokuPanelTest {
         assertTrue("After updateSolvedValues() cell (0, 0) should not be empty.", !getCellLabel(c).getText().isEmpty());
         assertTrue("After updateSolvedValues() cell (0, 0) should be different color.", c.getBackground().equals(controlLabel.getBackground()));
     }
+    
+    @Test
+    public void testUpdateValuesWithNull() {
+        SudokuPanel testPanel1 = new SudokuPanel();
+        testPanel1.updateValues(solvedSudoku);
+        try {
+            testPanel1.updateValues(null);
+            assertTrue("Values should not change when updating with null.", getCellLabel(this.getSudokuCell(this.getSudokuPanelSubset(testPanel1, 0), 2)).getText().equals("5"));
+        } catch (Exception ex) {
+            assertTrue("Exception caught while updating with null.", false);
+        }
+    }
+
+    @Test
+    public void testUpdateSolvedValuesWithNull() {
+        SudokuPanel testPanel1 = new SudokuPanel();
+        testPanel1.updateValues(solvedSudoku);
+        try {
+            testPanel1.updateSolvedValues(null, null);
+            testPanel1.updateSolvedValues(sudoku, null);
+            testPanel1.updateSolvedValues(null, solvedSudoku);
+            assertTrue("Values should not change when updating with null.", getCellLabel(this.getSudokuCell(this.getSudokuPanelSubset(testPanel1, 0), 2)).getText().equals("5"));
+        } catch (Exception ex) {
+            assertTrue("Exception caught while updating with null.", false);
+        }
+    }
 
     @Test
     public void testSetXYvalid() {
         for (int x = 0; x < 2; x++) {
-                for (int y = 0; y < 2; y++) {
-                    assertTrue("Cell (" + (x * 8) + ", " + (y * 8) + ") value should be: 5", testSetXY(x * 8, y * 8, "5"));
-                }
+            for (int y = 0; y < 2; y++) {
+                assertTrue("Cell (" + (x * 8) + ", " + (y * 8) + ") value should be: 5", testSetXY(x * 8, y * 8, "5"));
+            }
         }
     }
 
     @Test
     public void testSetXYinValid() {
-        for (int i = 0; i < 1; i++) {
-                for (int j = 0; j < 2; j++) {
-                    int x = (i * 10) - 1;
-                    int y = (j * 10) - 1;
-                    try {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                int x = (i * 7) - 1;
+                int y = (j * 7) - 1;
+                try {
+                    if (!(x == 6 && y == 6)) {
                         sp.setXY(x, y, "5");
-                    } catch (Exception ex) {
-                        assertTrue("setXY() dim test failed (" + x + ", " + y + "): " + ex.getMessage(), false);
                     }
+                } catch (Exception ex) {
+                    assertTrue("setXY() dim test failed (" + x + ", " + y + "): " + ex.getMessage(), false);
                 }
+            }
         }
         assertTrue("setXY() dim test passed", true);
     }
@@ -95,26 +120,28 @@ public class SudokuPanelTest {
     @Test
     public void testSetXYColorvalid() {
         for (int i = 0; i < 2; i++) {
-                for (int j = 0; j < 2; j++) {
-                    int x = i * 8;
-                    int y = j * 8;
-                    assertTrue("Cell (" + x + ", " + y + ") color should be pink.", testSetXYColor(x, y, Color.PINK));
-                }
+            for (int j = 0; j < 2; j++) {
+                int x = i * 8;
+                int y = j * 8;
+                assertTrue("Cell (" + x + ", " + y + ") color should be pink.", testSetXYColor(x, y, Color.PINK));
+            }
         }
     }
     
     @Test
     public void testSetXYColorinValid() {
-        for (int i = 0; i < 1; i++) {
-                for (int j = 0; j < 2; j++) {
-                    int x = (i * 10) - 1;
-                    int y = (j * 10) - 1;
-                    try {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                int x = (i * 7) - 1;
+                int y = (j * 7) - 1;
+                try {
+                    if (!(x == 6 && y == 6)) {
                         sp.setXYColor(x, y, Color.PINK);
-                    } catch (Exception ex) {
-                        assertTrue("setXYColor() dim test failed (" + x + ", " + y + "): " + ex.getMessage(), false);
                     }
+                } catch (Exception ex) {
+                    assertTrue("setXYColor() dim test failed (" + x + ", " + y + "): " + ex.getMessage(), false);
                 }
+            }
         }
         assertTrue("setXYColor() dim test passed", true);
     }

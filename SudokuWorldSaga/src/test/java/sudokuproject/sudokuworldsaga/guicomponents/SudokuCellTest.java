@@ -2,13 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package sudokuproject.sudokuworldsaga.SudokuBoard;
+package sudokuproject.sudokuworldsaga.guicomponents;
 
-import sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell;
 import java.awt.Component;
 import javax.swing.JLabel;
-import static org.junit.Assert.*;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *

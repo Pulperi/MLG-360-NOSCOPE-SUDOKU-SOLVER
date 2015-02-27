@@ -69,6 +69,7 @@
                 <configuration>
                     <excludedClasses>
                         <param>sudokuproject.sudokuworldsaga.ui*</param>
+                        <param>sudokuproject.sudokuworldsaga.domain*</param>
                     </excludedClasses>
                 </configuration>
             </plugin>

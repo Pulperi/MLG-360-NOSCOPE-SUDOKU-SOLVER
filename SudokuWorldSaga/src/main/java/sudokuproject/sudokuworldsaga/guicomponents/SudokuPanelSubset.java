@@ -1,4 +1,4 @@
-package sudokuproject.sudokuworldsaga.SudokuBoard;
+package sudokuproject.sudokuworldsaga.guicomponents;
 
 import java.awt.Color;
 
@@ -61,15 +61,15 @@ public class SudokuPanelSubset extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cell1 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell();
-        cell2 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell();
-        cell3 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell();
-        cell4 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell();
-        cell5 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell();
-        cell6 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell();
-        cell7 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell();
-        cell8 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell();
-        cell9 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell();
+        cell1 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuCell();
+        cell2 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuCell();
+        cell3 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuCell();
+        cell4 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuCell();
+        cell5 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuCell();
+        cell6 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuCell();
+        cell7 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuCell();
+        cell8 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuCell();
+        cell9 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuCell();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
@@ -103,15 +103,15 @@ public class SudokuPanelSubset extends javax.swing.JPanel {
         cell9.getAccessibleContext().setAccessibleName("cell8");
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell cell1;
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell cell2;
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell cell3;
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell cell4;
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell cell5;
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell cell6;
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell cell7;
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell cell8;
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuCell cell9;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuCell cell1;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuCell cell2;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuCell cell3;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuCell cell4;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuCell cell5;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuCell cell6;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuCell cell7;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuCell cell8;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuCell cell9;
     // End of variables declaration//GEN-END:variables
 
 

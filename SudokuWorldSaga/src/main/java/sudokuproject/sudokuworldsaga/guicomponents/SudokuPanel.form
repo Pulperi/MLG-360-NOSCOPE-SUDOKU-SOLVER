@@ -26,47 +26,47 @@
     <Property name="verticalGap" type="int" value="1"/>
   </Layout>
   <SubComponents>
-    <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset" name="subset1">
+    <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset" name="subset1">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="subset0"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset" name="subset2">
+    <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset" name="subset2">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="subset1"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset" name="subset3">
+    <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset" name="subset3">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="subset2"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset" name="subset4">
+    <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset" name="subset4">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="subset3"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset" name="subset5">
+    <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset" name="subset5">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="subset4"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset" name="subset6">
+    <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset" name="subset6">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="subset5"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset" name="subset7">
+    <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset" name="subset7">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="subset6"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset" name="subset8">
+    <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset" name="subset8">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="subset7"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanelSubset" name="subset9">
+    <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuPanelSubset" name="subset9">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="subset8"/>
       </AccessibilityProperties>

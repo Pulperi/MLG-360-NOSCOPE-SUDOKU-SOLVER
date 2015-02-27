@@ -138,7 +138,7 @@
         <Property name="rows" type="int" value="1"/>
       </Layout>
       <SubComponents>
-        <Component class="sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanel" name="sudokuPanel1">
+        <Component class="sudokuproject.sudokuworldsaga.guicomponents.SudokuPanel" name="sudokuPanel1">
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="sudokuPanel1MouseClicked"/>
           </Events>

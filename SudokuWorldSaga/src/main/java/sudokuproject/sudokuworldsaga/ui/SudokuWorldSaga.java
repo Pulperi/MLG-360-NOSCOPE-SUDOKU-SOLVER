@@ -59,7 +59,7 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
         jFileChooser = new javax.swing.JFileChooser();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
         sudokuBoardBorder = new javax.swing.JPanel();
-        sudokuPanel1 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanel();
+        sudokuPanel1 = new sudokuproject.sudokuworldsaga.guicomponents.SudokuPanel();
         newSudokuButton = new javax.swing.JButton();
         loadSudokuButton = new javax.swing.JButton();
         solveButton = new javax.swing.JButton();
@@ -540,7 +540,7 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
     private javax.swing.JButton newUnsolvedSudokuButton;
     private javax.swing.JButton solveButton;
     private javax.swing.JPanel sudokuBoardBorder;
-    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanel sudokuPanel1;
+    private sudokuproject.sudokuworldsaga.guicomponents.SudokuPanel sudokuPanel1;
     private javax.swing.JTextArea textField;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
