@@ -63,5 +63,5 @@
   * dokujen päivitystä
   * guicomponents luokkien junit testausta
 
-* 27/02/2015 // (~x tuntia)
+* 27/02/2015 // (~12 tuntia)
   * loppuviilausta
