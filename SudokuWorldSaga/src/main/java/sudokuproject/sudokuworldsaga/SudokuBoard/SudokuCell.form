@@ -52,6 +52,9 @@
           <Dimension value="[10, 10]"/>
         </Property>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="sudokuCellValue"/>
+      </AccessibilityProperties>
     </Component>
   </SubComponents>
 </Form>

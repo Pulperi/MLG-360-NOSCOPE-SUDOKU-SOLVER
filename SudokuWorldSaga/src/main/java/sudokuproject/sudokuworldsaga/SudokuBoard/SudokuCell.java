@@ -1,10 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package sudokuproject.sudokuworldsaga.ui.SudokuBoard;
+package sudokuproject.sudokuworldsaga.SudokuBoard;
 
 /**
+ * The graphical representation of a single sudoku cell.
  *
  * @author Henri
  */
@@ -17,7 +14,23 @@ public class SudokuCell extends javax.swing.JPanel {
         initComponents();
     }
     
+    /** 
+     * Sets the value of the cell as param newValue. If newValue == "0" then the cell value is set to "".
+     * 
+     * @param newValue 
+     */
     public void setValue(String newValue) {
+        if (newValue == null) {
+            return;
+        }
+        try {
+            int val = Integer.parseInt(newValue);
+            if (val < 0 || val > 9) {
+                return;
+            }
+        } catch (NumberFormatException ex) {
+           return;
+        }
         if (newValue.equals("0")) {
             cellValue.setText("");
         } else {
@@ -49,6 +62,7 @@ public class SudokuCell extends javax.swing.JPanel {
         cellValue.setMinimumSize(new java.awt.Dimension(10, 10));
         cellValue.setPreferredSize(new java.awt.Dimension(10, 10));
         add(cellValue);
+        cellValue.getAccessibleContext().setAccessibleName("sudokuCellValue");
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel cellValue;

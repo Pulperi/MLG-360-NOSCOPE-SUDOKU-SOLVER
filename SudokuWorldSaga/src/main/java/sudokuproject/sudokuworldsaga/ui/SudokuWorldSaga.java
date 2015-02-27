@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package sudokuproject.sudokuworldsaga.ui;
 
 import java.awt.Color;
@@ -63,7 +59,7 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
         jFileChooser = new javax.swing.JFileChooser();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
         sudokuBoardBorder = new javax.swing.JPanel();
-        sudokuPanel1 = new sudokuproject.sudokuworldsaga.ui.SudokuBoard.SudokuPanel();
+        sudokuPanel1 = new sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanel();
         newSudokuButton = new javax.swing.JButton();
         loadSudokuButton = new javax.swing.JButton();
         solveButton = new javax.swing.JButton();
@@ -344,6 +340,7 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
         Sudoku solvedSudoku = SudokuSolver.solve(sudoku);
         if (solvedSudoku != null) {
             sudokuPanel1.updateSolvedValues(sudoku, solvedSudoku);
+            sudoku = solvedSudoku;
             solveButton.setEnabled(false);
         }
         else {
@@ -385,8 +382,8 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
     }//GEN-LAST:event_newUnsolvedSudokuButtonActionPerformed
 
     private void difficultySliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_difficultySliderStateChanged
-        difficultyValueText.setText(difficultySlider.getValue() + "");
         difficultyValue = difficultySlider.getValue();
+        difficultyValueText.setText(difficultyValue + "");
     }//GEN-LAST:event_difficultySliderStateChanged
 
     private void difficultyValueTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_difficultyValueTextKeyPressed
@@ -439,7 +436,7 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
             sudokuPanel1.setXY(activeX, activeY, bText);
             int val = 0;
             sudokuPanel1.setXYColor(activeX, activeY, Color.WHITE);
-            if (!bText.equals("")) {
+            if (!bText.isEmpty()) {
                 val = Integer.parseInt(bText);
                 sudokuPanel1.setXYColor(activeX, activeY, Color.YELLOW);
             }
@@ -543,7 +540,7 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
     private javax.swing.JButton newUnsolvedSudokuButton;
     private javax.swing.JButton solveButton;
     private javax.swing.JPanel sudokuBoardBorder;
-    private sudokuproject.sudokuworldsaga.ui.SudokuBoard.SudokuPanel sudokuPanel1;
+    private sudokuproject.sudokuworldsaga.SudokuBoard.SudokuPanel sudokuPanel1;
     private javax.swing.JTextArea textField;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables

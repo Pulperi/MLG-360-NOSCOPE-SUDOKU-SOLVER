@@ -1,8 +1,6 @@
 package sudokuproject.sudokuworldsaga.domain;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
 
 /**
  * Main Sudoku class 
