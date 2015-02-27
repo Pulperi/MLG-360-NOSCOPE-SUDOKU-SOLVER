@@ -156,7 +156,7 @@ public class SudokuTest {
     // Generate 10 different size empty sudokus and check they dont contain wrong values
     @Test
     public void testToStringEmpty() {
-        System.out.println("Testing toString method with empty sudoku. Should print a sudoku filled with zeros.");
+        //Testing toString method with empty sudoku. Should print a sudoku filled with zeros.
         Random random = new Random();
         for (int i = 0; i < 10; i++) {
             testToStringEmpty(random.nextInt(10) + 2, random.nextInt(10) + 2);   
@@ -173,9 +173,9 @@ public class SudokuTest {
         }
     }
     
+    //Testing toString method with non-empty sudokus."
     @Test
     public void testSpecificSudoku() {
-        System.out.println("Testing toString method with non-empty sudokus.");
         Random random = new Random();
         for (int i = 0; i < 10; i++) {
             testSpecificSudoku(random.nextInt(1) + 2, random.nextInt(1) + 2);

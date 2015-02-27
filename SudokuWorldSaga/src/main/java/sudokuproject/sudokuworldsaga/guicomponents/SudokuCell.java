@@ -17,7 +17,7 @@ public class SudokuCell extends javax.swing.JPanel {
     /** 
      * Sets the value of the cell as param newValue. If newValue == "0" then the cell value is set to "".
      * 
-     * @param newValue 
+     * @param newValue The value to be inserted in the cell.
      */
     public void setValue(String newValue) {
         if (newValue == null) {
@@ -29,7 +29,7 @@ public class SudokuCell extends javax.swing.JPanel {
                 return;
             }
         } catch (NumberFormatException ex) {
-           return;
+            return;
         }
         if (newValue.equals("0")) {
             cellValue.setText("");

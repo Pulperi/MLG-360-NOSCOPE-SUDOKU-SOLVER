@@ -1,6 +1,7 @@
 package sudokuproject.sudokuworldsaga.domain;
 
 import java.util.ArrayList;
+import sudokuproject.sudokuworldsaga.fileio.FileManager;
 
 /**
  * Main Sudoku class 
@@ -69,7 +70,7 @@ public class Sudoku {
     }
     
     /**
-     * Make a copy of another sudoku
+     * Clones a sudoku from the values of the sudoku given as parameter
     */
     public Sudoku(Sudoku sudoku) throws IllegalArgumentException {
         if (sudoku == null) {
@@ -79,11 +80,20 @@ public class Sudoku {
         this.rows = sudoku.rows;
         this.sudoku = new SudokuData(cols, rows, sudoku.getSudokuData());
     }
-    
+    /**
+     * Method goes through whole sudoku and checks if there are any unsolved sudoku cells.
+     * 
+     * @return true if solved, false if not solved
+     */
     public boolean isSolved() {
         return countUnsolved() == 0;
     }
     
+    /**
+     * Method goes through whole sudoku and counts the unsolved sudoku cells.
+     * 
+     * @return number of unsolved sudoku cells
+     */
     public int countUnsolved() {
         int n = 0;
         int sudokuSize = cols * rows;
@@ -96,6 +106,11 @@ public class Sudoku {
         }
         return n;
     }
+    
+    /**
+     * Uses the sudoku shuffler algorithm of the SudokuShuffler class to scramble the sudoku.
+     * Shuffled sudokus are still valid.
+     */
     
     public void shuffleSudoku() {
         sudoku.doTheShuffle();
@@ -110,7 +125,12 @@ public class Sudoku {
   
     
     /**
-     * Returns a ArrayList of possible entries in a given cell x,y
+     * Takes sudoku cell location (x, y) as parameteres and finds all the possible entry values to that cell.
+     * 
+     * @param x column
+     * @param y row
+     * @return Returns an ArrayList of possible entries in the cell (x, y)
+     * @throws IllegalArgumentException if x or y out of bounds
      */
     
     public ArrayList<Integer> getEntries(int x, int y) throws IllegalArgumentException {
@@ -148,7 +168,8 @@ public class Sudoku {
         return validEntries;
     }
 
-    /** Checks if the sudoku data is valid
+    /** 
+     * Checks if the sudoku data is valid
      * 
      * @see SudokuData
      * 
@@ -166,11 +187,22 @@ public class Sudoku {
     public int getCols() {
         return cols;
     }
-    
+    /**
+     * 
+     * @return size = cols * rows
+     */
     public int getSize() {
         return rows * cols;
     }
     
+    /** 
+     * Takes the sudoku cell location (x, y) as parameter and returns it's current value
+     * 
+     * @param x column
+     * @param y row
+     * @return cell value
+     * @throws IllegalArgumentException if x or y out of bounds
+     */
     public int getXY(int x, int y) throws IllegalArgumentException {
         if (!isInRange(x, y)) {
             throw new IllegalArgumentException("x and/or y not in range");
@@ -178,6 +210,13 @@ public class Sudoku {
         return sudoku.getXY(x, y);
     }
     
+    /**
+     * Returns a 2d int array representation of the sudoku, mainly used by the FileManager class.
+     * 
+     * @see FileManager
+     * 
+     * @return int[][] with sudoku values
+     */
     public int[][] getSudokuData() {
         return sudoku.getData();
     }

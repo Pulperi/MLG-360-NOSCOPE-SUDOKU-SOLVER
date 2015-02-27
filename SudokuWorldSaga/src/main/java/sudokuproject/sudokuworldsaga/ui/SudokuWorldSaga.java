@@ -342,8 +342,7 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
             sudokuPanel1.updateSolvedValues(sudoku, solvedSudoku);
             sudoku = solvedSudoku;
             solveButton.setEnabled(false);
-        }
-        else {
+        } else {
             textField.append("Sudoku is not solvable. Mistakes were made.\n");
         }
         disableSudokuButtons();
@@ -429,7 +428,7 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
         if (o.getClass() != b0.getClass()) {
             return;
         }
-        JButton bSource = (JButton)o;
+        JButton bSource = (JButton) o;
         if (bSource.getAccessibleContext().getAccessibleDescription().equals("sudokuButton")) {
             
             String bText = bSource.getText();
@@ -462,8 +461,8 @@ public class SudokuWorldSaga extends javax.swing.JFrame {
         absY = removeBorders(absY, borderWidth, cellWidth);
         
         // Calculate row/col index
-        int x = (absX - (absX % cellWidth))/cellWidth;
-        int y = (absY - (absY % cellWidth))/cellWidth;
+        int x = (absX - (absX % cellWidth)) / cellWidth;
+        int y = (absY - (absY % cellWidth)) / cellWidth;
         
         return new int[]{x, y};
     }

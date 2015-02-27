@@ -6,8 +6,8 @@ package sudokuproject.sudokuworldsaga.guicomponents;
 
 import java.awt.Component;
 import javax.swing.JLabel;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *
@@ -15,12 +15,11 @@ import static org.junit.Assert.*;
  */
 public class SudokuCellTest {
     
-    private SudokuCell sudokuCell1, sudokuCell2, sudokuCell3;
+    private SudokuCell sudokuCell1, sudokuCell2;
     
     public SudokuCellTest() {
         sudokuCell1 = new SudokuCell();
         sudokuCell2 = new SudokuCell();
-        sudokuCell3 = new SudokuCell();
     }
 
     @Test
@@ -63,7 +62,7 @@ public class SudokuCellTest {
     private JLabel getCellLabel(SudokuCell cell) {
         for (Component i : cell.getComponents()) {
             if (i.getAccessibleContext().getAccessibleName().equals("sudokuCellValue")) {
-                return (JLabel)i;
+                return (JLabel) i;
             }
         }
         return null;

@@ -4,19 +4,26 @@
  */
 package sudokuproject.sudokuworldsaga.domain;
 
-import java.util.ArrayList;
 import java.util.Random;
 
-/** Shuffling algorithm for sudokus to generate 'better' sudokus
+/** 
+ * Shuffling algorithm for sudokus to generate 'better' sudokus
  *
+ * The algorithm swaps rows and columns of the sudoku with each 
+ * other in a way that doesn't affect the validity of sudoku.<p>
+ * 
+ * Legal operations:<p>
+ * - swapping a row/column of subsets with each other<br>
+ * - swapping a row/column inside of a row of subset with each other<br>
+ * 
  * @author Henri
  */
 public class SudokuShuffler {
     
     /**
-     * Method runs shuffling algorithms for given sudoku number table
-     * Shuffling doesn't affect the validity of sudoku
-     *
+     * Method runs shuffling algorithms for given sudoku number table<p>
+     * Shuffling doesn't affect the validity of sudoku.
+     * 
      * @param rows Number of rows
      * @param cols Number of columns
      * @param sudoku Table that contains the sudoku data we want to shuffle

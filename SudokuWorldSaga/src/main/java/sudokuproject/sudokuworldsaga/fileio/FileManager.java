@@ -41,7 +41,6 @@ public class FileManager {
         try (Scanner reader = new Scanner(file)) {
             sudokuDataArray = readLoadedFile(reader);
         } catch (Exception ex) {
-            //System.out.println(ex.getMessage());
             return null;
         }
         
@@ -100,7 +99,6 @@ public class FileManager {
                 rows = Integer.parseInt(str[0]);
                 cols = Integer.parseInt(str[1]);
             } catch (NumberFormatException ex) {
-                System.out.println(ex.getMessage());
                 return null;
             }
             if (rows > 1 && cols > 1) {
@@ -127,7 +125,6 @@ public class FileManager {
             try {
                 newValues = convertToInt(newLine);
             } catch (NumberFormatException ex) {
-                System.out.println(ex.getMessage());
                 return null;
             }
             
@@ -167,31 +164,4 @@ public class FileManager {
         }
         return valuesValid;
     }
-        
-    /*
-    public static Sudoku loadSudokuFromFile(String fileName) {
-        int[][] sudokuDataArray;
-        Sudoku sudoku;
-        
-        try (Scanner reader = new Scanner(new File(fileName))) {
-            sudokuDataArray = readLoadedFile(reader);
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex.getMessage());
-            return null;
-        }
-        
-        if (sudokuDataArray != null) {
-            int[][] copy = new int[sudokuDataArray.length-1][];
-            for (int i = 0; i < copy.length; i++) {
-                copy[i] = Arrays.copyOf(sudokuDataArray[i+1], sudokuDataArray[i+1].length);
-            }
-            sudoku = new Sudoku(sudokuDataArray[0][0],
-                                sudokuDataArray[0][1], 
-                                copy);
-            return sudoku;
-        }
-        
-        return null;
-    }
-    */
 }

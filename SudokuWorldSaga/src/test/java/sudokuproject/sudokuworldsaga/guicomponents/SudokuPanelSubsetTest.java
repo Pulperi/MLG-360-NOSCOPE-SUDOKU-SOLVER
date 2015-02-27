@@ -7,8 +7,8 @@ package sudokuproject.sudokuworldsaga.guicomponents;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JLabel;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *

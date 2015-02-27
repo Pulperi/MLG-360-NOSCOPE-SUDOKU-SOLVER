@@ -2,23 +2,28 @@
 
 ![logo](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/art.png)
 
-Projektin tarkoitus on l‰hte‰ tyˆst‰m‰‰n sudokupeli‰/-ohjelmaa. Projektin lopputulos tulee olemaan "kaikenkattava" sudokuohjelma, jolla pystyy ratkaisemaan sudokuita, generoimaan uusia sudokulautoja ja pelaamaan sudokuita (i.e. ratkaisemaan niit‰ k‰sin).
+SudokuWorldSaga on projektin puitteissa kyh√§tty sudokupeli. Alunperin projektia l√§hdettiin kehitt√§m√§√§n ihan sudokuratkaisijana.
+Kuitenkin projektin edetess√§ ja eri toimintojen m√§√§r√§n kasvaessa todettiin ett√§ 'pelimoodin' lis√§√§minen ei olisikaan mik√§√§n iso homma.
 
-#### T‰h‰n menness‰ toteutetut toiminnot
+Peliss√§ voi t√§ytell√§ sudokuja k√§sin tai ratkaista niit√§ ratkaisija-algoritmilla.
+Sudokujen lataus peliin tapahtuu joko automaattisen generaattorin kautta, tiedostosta tai k√§sin.
 
-* Graafinen k‰yttˆliittym‰, jolla voi ladata ruudulle sudokuita ja ratkaista niit‰
-**K‰ytt‰j‰n toiminnot:**
-* Lataa tyhj‰ sudoku
-* Lataa uusi generoitu sudoku
-* Sudokun lataaminen tiedostosta (done)
-* Ladatun sudokun ratkaiseminen automaattisesti ratkaisijalla
+#### T√§h√§n menness√§ toteutetut toiminnot
 
-#### Tyˆn alla
-* Sudokun syˆtt‰minen manuaalisesti graafisen k‰yttˆliittym‰n kautta
-* Sudokun parempi visualisointi graafisessa k‰yttˆliittym‰ss‰
-* Sudokun tilan tallennus tiedostoon (toiminnallisuus olemassa)
-* Mahdollisuus vaikuttaa generoitujen sudokujen vaikeusasteeseen (toiminnalisuus olemassa)
-* Sudokupelin "pelaus" (generoitujen sudokujen t‰yttˆ manualisesti)
+* Graafinen k√§ytt√∂liittym√§, jolla voi ladata ruudulle sudokuita ja ratkaista niit√§
+** Graafisen k√§ytt√∂liittym√§n k√§ytt√§j√§n toiminnot:**
+  * Lataa tyhj√§ sudoku
+  * Lataa uusi generoitu sudoku (mahdollisuus my√∂s vaikuttaa generoitujen sudokuiden vaikeuteen)
+  * Sudokun lataaminen tiedostosta
+  * Ladatun sudokun ratkaiseminen automaattisesti ratkaisijalla
+  * Ladatun sudokun ratkaiseminen k√§sin sy√∂tt√§m√§ll√§ vastauksia graafisen k√§ytt√∂liittym√§n avulla.
+** Graafisen k√§ytt√∂liittym√§n ominaisuuksia:**
+  * K√§ytt√∂liittym√§√§n rakennettu sudokulaudan ruutujen v√§rikoodaus:
+  ** valkoiset: sudokun alkuper√§isarvot
+  ** keltaiset: k√§ytt√§j√§n sy√∂tt√§m√§t arvot
+  ** vihre√§t: ratkaisijan t√§ytt√§m√§t arvot
+
+
 
 ![GraphicalUserInterFace_alpha](https://raw.githubusercontent.com/Pulperi/MLG-360-NOSCOPE-SUDOKU-SOLVER/master/dokumentointi/GraphicalUserInterFace_alpha.png)
 

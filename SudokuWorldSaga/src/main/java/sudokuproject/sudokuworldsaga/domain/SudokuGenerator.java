@@ -11,19 +11,41 @@ import java.util.Random;
 
     
 /**
-    * > generates random solved sudoku<br>
-    * > sets n cells as zeros<br>
-    * > generates all the possible solutions for sudoku<br>
-    * > starts adding values to cells till only 1 solution<br>
-    * > ...<br>
-    * > profit<br>
-    * 
-    * (current algorithm quite inefficient)
-    * @author Henri
-    */
+ * <h5>SudokuGenerator class is used to create new randomly generated unsolved Sudoku objects 
+ * with a single solution.</h5>
+ * <b>Sudokus are generated with an algorithm that works in several phases:</b><p>
+ * First it uses the SudokuSolver class to generate the initial seed for 
+ * the generated sudoku.<p>
+ * Then SudokuShuffler is used to make the sudoku more random.<p>
+ * The algorithm then proceeds to remove n values from the sudoku (n given as method parameter).<p>
+ * At this point we are left with a partially solved sudoku that has 1 - m solutions and the goal 
+ * is to reduce them to a single one. At this point it uses the SudokuSolver.solveAll() algorithm to
+ * get all the possible solutions for the partially solved sudoku.<p>
+ * Start loop:<p>
+ * If only one solution is found the algorithm finishes.<p>
+ * Else the algorithm adds one value from the solutions to the sudoku and removes invalid solutions from list of solutions<p>
+ * END.<p>
+ * 
+ * For more details see project documentation.
+ * 
+ * @see SudokuSolver
+ * @see SudokuShuffler
+ * 
+ * @author Henri
+ */
 
 public class SudokuGenerator {
 
+    /**
+     * Algorithm to generate random sudokus with single solution.
+     * The generated sudoku will have (nEmpty - n) empty cells depending on 
+     * algorithm execution randomness.
+     * 
+     * @param cols columns
+     * @param rows rows
+     * @param nEmpty Number of desired empty cells. 
+     * @return The generated sudoku
+     */
     public static Sudoku genNewSudoku(int cols, int rows, int nEmpty) {
         // GEN "RANDOM" FILLED SUDOKU AND THEN SET N CELLS TO ZERO
         if (nEmpty < 0) {
@@ -157,8 +179,8 @@ public class SudokuGenerator {
             }
         }
     }
-    
 }
+// Helper class
 class Coords {
     int x, y;
         

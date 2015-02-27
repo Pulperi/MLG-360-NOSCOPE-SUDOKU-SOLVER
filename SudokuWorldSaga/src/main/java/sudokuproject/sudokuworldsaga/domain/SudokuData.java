@@ -3,6 +3,7 @@ package sudokuproject.sudokuworldsaga.domain;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import sudokuproject.sudokuworldsaga.fileio.FileManager;
 
 /**
  * SudokuData container class 
@@ -20,13 +21,14 @@ public class SudokuData {
     private final int rows, cols;
     
     /** 
-     * All the possible cell values
-     * 
-     * VALUESET[5] = 5, 
-     * VALUESET[12] = c, 
-     * ...
-     * 
-     * (not in use during current phase of the development)
+     * All the possible cell values.<p>
+     * To be used when working with custom n x m sudoku sizes.<p>
+     * <p>
+     * VALUESET[5] = 5, <p>
+     * VALUESET[12] = c, <p>
+     * ...<p>
+     * <p>
+     * (not in use during current phase of the development)<p>
      */
     public static final String[] VALUESET = {"0", "1", "2", "3", "4", "5",
         "6", "7", "8", "9", "a", "b", "c", "d", "e", "e", "f", "g", "h", "i", 
@@ -159,24 +161,61 @@ public class SudokuData {
         }
         return false;
     }
-    
+    /**
+     * Returns a 2d int array representation of the sudoku, mainly used by the FileManager class.
+     * 
+     * @see FileManager
+     * 
+     * @return int[][] with sudoku values
+     */
     public int[][] getData() {
         return matrixCopy(sudokuDataArray);
     }
     
+    /**
+     * Takes cell location (x, y) as parameter and returns 
+     * all the values in the subset the cell is located in.
+     * 
+     * @param x column
+     * @param y row
+     * @return subset cell values
+     */
     public int[] getNumbersInSubset(int x, int y) {
         int[] subSet = Arrays.copyOf(sudokuDataArray[findSubsetIndex(x, y)], sudokuDataArray[findSubsetIndex(x, y)].length);
         return subSet;
     }
     
+    /**
+     * Takes cell location (x, y) as parameter and returns 
+     * the values of that cell.
+     * 
+     * @param x column
+     * @param y row
+     * @return cell value
+     */
     public int getXY(int x, int y) {
         return sudokuDataArray[findSubsetIndex(x, y)][findCellIndex(x, y)];
     }
     
+    /**
+     * Takes cell location (x, y) as parameter and returns 
+     * a String representation of the value of that cell.
+     * 
+     * @param x column
+     * @param y row
+     * @return cell value String
+     */
     public String getSymbolXY(int x, int y) {
         return VALUESET[getXY(x, y)];
     }
     
+    /**
+     * Takes cell location (x, y) as parameter and changes 
+     * the value of that cell to given parameter value.
+     * 
+     * @param x column
+     * @param y row
+     */
     public void set(int x, int y, int value) {
         sudokuDataArray[findSubsetIndex(x, y)][findCellIndex(x, y)] = value;
     }
@@ -201,6 +240,10 @@ public class SudokuData {
         return copy;
     }
     
+    /**
+     * Uses the sudoku shuffler algorithm of the SudokuShuffler class to scramble the sudoku.
+     * Shuffled sudokus are still valid.
+     */
     public void doTheShuffle() {
         SudokuShuffler.doTheShuffle(rows, cols, sudokuDataArray);
     }
